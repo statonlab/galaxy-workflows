@@ -1,0 +1,152 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "DESeq2 analysis", 
+    "format-version": "0.1", 
+    "name": "differential-expression-analysis", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "aligned reads in sam/bam format", 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list\"}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "832e40c2-a532-4c89-9d3f-0c19e0938fc2", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "gene annotation file", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 302
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "04bb1f34-8ac4-4b3c-ab6e-98f7a30a6e8a", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_htseq/aurora_htseq/1.0.0", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "alignment_files": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "gff": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Aurora htseq", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "sink_message", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "count", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "count_rdata", 
+                    "type": "rdata"
+                }
+            ], 
+            "position": {
+                "left": 479, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_htseq/aurora_htseq/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "0fdb0d5f53ce", 
+                "name": "aurora_htseq", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"sample_names\": \"\\\"\\\"\", \"feature_type\": \"\\\"exon\\\"\", \"format\": \"\\\"bam\\\"\", \"idattr\": \"\\\"gene_id\\\"\", \"__rerun_remap_job_id__\": null, \"stranded\": \"\\\"yes\\\"\", \"echo\": \"\\\"false\\\"\", \"minaqual\": \"\\\"10\\\"\", \"alignment_files\": \"null\", \"mode\": \"\\\"union\\\"\", \"gff\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 4243}]}\", \"order\": \"\\\"name\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "d36abdb6-4c75-4079-8cdd-58fd54035503", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_deseq2/aurora_deseq2/2.2.0", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "count_data": {
+                    "id": 2, 
+                    "output_name": "count_rdata"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Aurora DESeq2", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "sink_message", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "significant_genes", 
+                    "type": "csv"
+                }
+            ], 
+            "position": {
+                "left": 727, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_deseq2/aurora_deseq2/2.2.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "32ed0a8df05c", 
+                "name": "aurora_deseq2", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"fit_type\": \"\\\"parametric\\\"\", \"__page__\": null, \"count_data\": \"null\", \"column_data\": \"null\", \"design_formula\": \"\\\"\\\"\", \"test_type\": \"\\\"Wald\\\"\", \"echo\": \"\\\"true\\\"\", \"treatment_name\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"alpha\": \"\\\"0.1\\\"\", \"treated\": \"\\\"\\\"\", \"untreated\": \"\\\"\\\"\"}", 
+            "tool_version": "2.2.0", 
+            "type": "tool", 
+            "uuid": "3035e302-a4d7-446a-87ec-dea58eae4031", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "feb0bd57-7bca-4eef-bd42-9007258dad6d"
+}
