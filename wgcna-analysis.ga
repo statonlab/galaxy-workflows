@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "wgcna analysis (imported from uploaded file)", 
+    "name": "wgcna-analysis", 
     "steps": {
         "0": {
             "annotation": "", 
