@@ -1,6 +1,6 @@
 {
     "a_galaxy_workflow": "true", 
-    "annotation": "mapping", 
+    "annotation": "", 
     "format-version": "0.1", 
     "name": "mapping-hisat2-paired-end", 
     "steps": {
@@ -11,18 +11,18 @@
             "id": 0, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "reference genome", 
-            "name": "Input dataset", 
+            "label": "list of paired reads", 
+            "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
                 "left": 200, 
                 "top": 200
             }, 
             "tool_id": null, 
-            "tool_state": "{}", 
+            "tool_state": "{\"collection_type\": \"list:paired\"}", 
             "tool_version": null, 
-            "type": "data_input", 
-            "uuid": "dc4a6d24-923f-4b8b-8b8e-798cdb0c90ca", 
+            "type": "data_collection_input", 
+            "uuid": "d31e0726-cd9d-4841-9638-0b6b7b629cb3", 
             "workflow_outputs": []
         }, 
         "1": {
@@ -31,40 +31,67 @@
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
-            "inputs": [], 
-            "label": "dataset collection of first reads", 
-            "name": "Input dataset collection", 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "reference genome"
+                }
+            ], 
+            "label": "reference genome", 
+            "name": "Input dataset", 
             "outputs": [], 
             "position": {
                 "left": 200, 
-                "top": 302
+                "top": 285
             }, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\"}", 
+            "tool_state": "{\"name\": \"reference genome\"}", 
             "tool_version": null, 
-            "type": "data_collection_input", 
-            "uuid": "182f5245-fd1a-439d-a574-a5f2a65e769a", 
+            "type": "data_input", 
+            "uuid": "2e8c6281-19f7-4e77-b8b9-8a3999aca7ff", 
             "workflow_outputs": []
         }, 
         "2": {
             "annotation": "", 
-            "content_id": null, 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "errors": null, 
             "id": 2, 
-            "input_connections": {}, 
-            "inputs": [], 
-            "label": "dataset collection of second reads", 
-            "name": "Input dataset collection", 
-            "outputs": [], 
-            "position": {
-                "left": 200, 
-                "top": 404
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
             }, 
-            "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\"}", 
-            "tool_version": null, 
-            "type": "data_collection_input", 
-            "uuid": "9e7fb7fe-33a9-451c-9b63-c957f2d26dc9", 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FASTQ Groomer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 475, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "tool_shed_repository": {
+                "changeset_revision": "e4d28c94242d", 
+                "name": "fastq_groomer", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file|__identifier__\": \"\\\"reverse\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "1.0.4", 
+            "type": "tool", 
+            "uuid": "f3de1300-b7cf-401e-9a3a-5a3aa47a0880", 
             "workflow_outputs": []
         }, 
         "3": {
@@ -74,30 +101,22 @@
             "id": 3, 
             "input_connections": {
                 "library|input_1": {
-                    "id": 1, 
-                    "output_name": "output"
-                }, 
-                "library|input_2": {
                     "id": 2, 
-                    "output_name": "output"
+                    "output_name": "output_file"
                 }, 
                 "reference_genome|history_item": {
-                    "id": 0, 
+                    "id": 1, 
                     "output_name": "output"
                 }
             }, 
             "inputs": [
                 {
                     "description": "runtime parameter for tool HISAT2", 
+                    "name": "library"
+                }, 
+                {
+                    "description": "runtime parameter for tool HISAT2", 
                     "name": "reference_genome"
-                }, 
-                {
-                    "description": "runtime parameter for tool HISAT2", 
-                    "name": "library"
-                }, 
-                {
-                    "description": "runtime parameter for tool HISAT2", 
-                    "name": "library"
                 }
             ], 
             "label": null, 
@@ -129,7 +148,7 @@
                 }
             ], 
             "position": {
-                "left": 479, 
+                "left": 803, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -140,10 +159,10 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"input_2\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"type\\\": \\\"paired\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": 0, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"input_1|__identifier__\": \"\\\"reverse\\\"\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
             "tool_version": "2.1.0", 
             "type": "tool", 
-            "uuid": "4203699f-4bfe-4145-a1c7-3f6c6a7eb5c3", 
+            "uuid": "b43b4aaa-09e5-41e8-88a9-3e3d0d6962b1", 
             "workflow_outputs": []
         }, 
         "4": {
@@ -157,7 +176,12 @@
                     "output_name": "output_alignments"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat", 
+                    "name": "input1"
+                }
+            ], 
             "label": null, 
             "name": "Flagstat", 
             "outputs": [
@@ -167,7 +191,7 @@
                 }
             ], 
             "position": {
-                "left": 807, 
+                "left": 1131, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -178,13 +202,13 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"null\"}", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input1|__identifier__\": \"\\\"reverse\\\"\"}", 
             "tool_version": "2.0.1", 
             "type": "tool", 
-            "uuid": "e5eaff40-d331-4557-b64d-e5c4120788b6", 
+            "uuid": "0286e608-9e57-48bd-8245-f3058dfb12e7", 
             "workflow_outputs": []
         }
     }, 
     "tags": [], 
-    "uuid": "f92f1617-0c99-4a9e-bc18-57d52efdf146"
+    "uuid": "88151edf-3e34-479c-9334-edda5cff7c93"
 }
