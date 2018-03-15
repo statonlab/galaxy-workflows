@@ -1,6 +1,6 @@
 {
     "a_galaxy_workflow": "true", 
-    "annotation": "mapping", 
+    "annotation": "", 
     "format-version": "0.1", 
     "name": "mapping-bowtie2-paired-end", 
     "steps": {
@@ -11,7 +11,7 @@
             "id": 0, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "dataset collection of first reads", 
+            "label": "list of paired reads", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
@@ -19,10 +19,10 @@
                 "top": 200
             }, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\"}", 
+            "tool_state": "{\"collection_type\": \"list:paired\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
-            "uuid": "d56977a6-a624-4725-80f1-df5497070c28", 
+            "uuid": "61df7157-794a-4424-9614-84a0010ddfb5", 
             "workflow_outputs": []
         }, 
         "1": {
@@ -31,73 +31,92 @@
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
-            "inputs": [], 
-            "label": "dataset collection of second reads", 
-            "name": "Input dataset collection", 
-            "outputs": [], 
-            "position": {
-                "left": 200, 
-                "top": 302
-            }, 
-            "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\"}", 
-            "tool_version": null, 
-            "type": "data_collection_input", 
-            "uuid": "534cb3e1-9666-4eba-bee3-35d4f6b56856", 
-            "workflow_outputs": []
-        }, 
-        "2": {
-            "annotation": "", 
-            "content_id": null, 
-            "errors": null, 
-            "id": 2, 
-            "input_connections": {}, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "reference genome"
+                }
+            ], 
             "label": "reference genome", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
                 "left": 200, 
-                "top": 404
+                "top": 285
             }, 
             "tool_id": null, 
-            "tool_state": "{}", 
+            "tool_state": "{\"name\": \"reference genome\"}", 
             "tool_version": null, 
             "type": "data_input", 
-            "uuid": "b565569e-0660-43d5-a0a2-ec6efbedd1bf", 
+            "uuid": "ee55811d-737e-4dca-b414-b88a70ce0681", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FASTQ Groomer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 475, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "tool_shed_repository": {
+                "changeset_revision": "e4d28c94242d", 
+                "name": "fastq_groomer", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file|__identifier__\": \"\\\"reverse\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "1.0.4", 
+            "type": "tool", 
+            "uuid": "01c57706-cdbc-4829-8263-2982af8b062b", 
             "workflow_outputs": []
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.3.1", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
             "errors": null, 
             "id": 3, 
             "input_connections": {
                 "library|input_1": {
-                    "id": 0, 
-                    "output_name": "output"
-                }, 
-                "library|input_2": {
-                    "id": 1, 
-                    "output_name": "output"
+                    "id": 2, 
+                    "output_name": "output_file"
                 }, 
                 "reference_genome|own_file": {
-                    "id": 2, 
+                    "id": 1, 
                     "output_name": "output"
                 }
             }, 
             "inputs": [
                 {
                     "description": "runtime parameter for tool Bowtie2", 
+                    "name": "library"
+                }, 
+                {
+                    "description": "runtime parameter for tool Bowtie2", 
                     "name": "reference_genome"
-                }, 
-                {
-                    "description": "runtime parameter for tool Bowtie2", 
-                    "name": "library"
-                }, 
-                {
-                    "description": "runtime parameter for tool Bowtie2", 
-                    "name": "library"
                 }
             ], 
             "label": null, 
@@ -133,21 +152,21 @@
                 }
             ], 
             "position": {
-                "left": 479, 
+                "left": 803, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.3.1", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
             "tool_shed_repository": {
-                "changeset_revision": "121110a12cc9", 
+                "changeset_revision": "a9d4f71dbfb0", 
                 "name": "bowtie2", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"false\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"input_2\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"type\\\": \\\"paired\\\", \\\"paired_options\\\": {\\\"no_mixed\\\": \\\"false\\\", \\\"dovetail\\\": \\\"false\\\", \\\"I\\\": \\\"0\\\", \\\"no_contain\\\": \\\"false\\\", \\\"no_discordant\\\": \\\"false\\\", \\\"no_overlap\\\": \\\"false\\\", \\\"__current_case__\\\": 0, \\\"X\\\": \\\"500\\\", \\\"fr_rf_ff\\\": \\\"--fr\\\", \\\"paired_options_selector\\\": \\\"yes\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"__current_case__\\\": 1, \\\"own_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"simple\\\", \\\"presets\\\": \\\"no_presets\\\", \\\"__current_case__\\\": 0}\"}", 
-            "tool_version": "2.3.3.1", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"false\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"__current_case__\\\": 2, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"type\\\": \\\"paired_collection\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"__current_case__\\\": 1, \\\"own_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"simple\\\", \\\"presets\\\": \\\"no_presets\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "2.2.6.2", 
             "type": "tool", 
-            "uuid": "78a28ea1-4df3-417c-82ca-3be3ef55660b", 
+            "uuid": "ae5c2098-0ff0-4212-b1b1-6904d0268e55", 
             "workflow_outputs": []
         }, 
         "4": {
@@ -161,7 +180,12 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat", 
+                    "name": "input1"
+                }
+            ], 
             "label": null, 
             "name": "Flagstat", 
             "outputs": [
@@ -171,7 +195,7 @@
                 }
             ], 
             "position": {
-                "left": 807, 
+                "left": 1131, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -182,13 +206,13 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"null\"}", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input1|__identifier__\": \"\\\"100M_emerald_6.5_Sample12_L1..paired.trimmed\\\"\"}", 
             "tool_version": "2.0.1", 
             "type": "tool", 
-            "uuid": "289cd378-e89c-45ab-b4ad-d37b5aeecfa7", 
+            "uuid": "10a8178f-0652-433b-9078-d651123548f9", 
             "workflow_outputs": []
         }
     }, 
     "tags": [], 
-    "uuid": "c337f157-e0e7-4cd6-8515-b2e94b56f363"
+    "uuid": "90817cc0-4042-45d3-9ba0-ec341b98944c"
 }
