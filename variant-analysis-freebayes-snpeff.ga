@@ -1,15 +1,104 @@
 {
     "a_galaxy_workflow": "true", 
-    "annotation": "variant analysis", 
+    "annotation": "", 
     "format-version": "0.1", 
     "name": "variant-analysis-freebayes-snpeff", 
     "steps": {
         "0": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/freebayes/freebayes/1.1.0.46-0", 
+            "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset Collection"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list\", \"name\": \"Input Dataset Collection\"}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "ec9ec668-132e-40db-bf3b-778199cdf31f", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "reference sequence", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 285
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "32e16de7-5f75-4698-9188-77de597ff636", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "SnpEff Download", 
+            "outputs": [
+                {
+                    "name": "snpeff_db", 
+                    "type": "snpeffdb"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 387
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "68693743661e", 
+                "name": "snpeff", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"genome_version\": \"\\\"\\\"\"}", 
+            "tool_version": "4.3r.1", 
+            "type": "tool", 
+            "uuid": "9295e1ae-9050-4c4c-bd26-92ad45195b82", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/freebayes/freebayes/1.1.0.46-0", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "reference_source|batchmode|input_bams": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "reference_source|ref_file": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
             "inputs": [
                 {
                     "description": "runtime parameter for tool FreeBayes", 
@@ -33,7 +122,7 @@
                 }
             ], 
             "position": {
-                "left": 200, 
+                "left": 475, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -44,53 +133,20 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"reference_source\": \"{\\\"batchmode\\\": {\\\"input_bams\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"processmode\\\": \\\"individual\\\", \\\"__current_case__\\\": 0}, \\\"ref_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"reference_source_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 1, \\\"options_type_selector\\\": \\\"simple\\\"}\", \"target_limit_type\": \"{\\\"target_limit_type_selector\\\": \\\"do_not_limit\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_state": "{\"__page__\": null, \"reference_source|input_bams|__identifier__\": \"\\\"father.bam\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 1, \\\"options_type_selector\\\": \\\"simple\\\"}\", \"reference_source\": \"{\\\"batchmode\\\": {\\\"input_bams\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"processmode\\\": \\\"individual\\\", \\\"__current_case__\\\": 0}, \\\"ref_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"reference_source_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\", \"chromInfo\": \"\\\"/local/sites/galaxy/htdocs/tool-data/shared/ucsc/chrom/?.len\\\"\", \"target_limit_type\": \"{\\\"target_limit_type_selector\\\": \\\"do_not_limit\\\", \\\"__current_case__\\\": 0}\"}", 
             "tool_version": "1.1.0.46-0", 
             "type": "tool", 
-            "uuid": "1f61074b-11e6-4ac0-88e3-0ce782f6da5c", 
+            "uuid": "097dd3e3-823f-47a5-b98a-8029feac538a", 
             "workflow_outputs": []
         }, 
-        "1": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
-            "errors": null, 
-            "id": 1, 
-            "input_connections": {}, 
-            "inputs": [], 
-            "label": null, 
-            "name": "SnpEff Download", 
-            "outputs": [
-                {
-                    "name": "snpeff_db", 
-                    "type": "snpeffdb"
-                }
-            ], 
-            "position": {
-                "left": 200, 
-                "top": 411
-            }, 
-            "post_job_actions": {}, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
-            "tool_shed_repository": {
-                "changeset_revision": "68693743661e", 
-                "name": "snpeff", 
-                "owner": "iuc", 
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"genome_version\": \"\\\"\\\"\"}", 
-            "tool_version": "4.3r.1", 
-            "type": "tool", 
-            "uuid": "66ae9a99-ce03-4f11-8d7f-59cf691b7d4d", 
-            "workflow_outputs": []
-        }, 
-        "2": {
+        "4": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/vcfallelicprimitives/vcfallelicprimitives/1.0.0_rc1.0", 
             "errors": null, 
-            "id": 2, 
+            "id": 4, 
             "input_connections": {
                 "input": {
-                    "id": 0, 
+                    "id": 3, 
                     "output_name": "output_vcf"
                 }
             }, 
@@ -104,7 +160,7 @@
                 }
             ], 
             "position": {
-                "left": 496, 
+                "left": 803, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -115,24 +171,24 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"max_length\": \"\\\"200\\\"\", \"__rerun_remap_job_id__\": null, \"keep_geno\": \"\\\"false\\\"\", \"keep_info\": \"\\\"false\\\"\", \"t_option\": \"\\\"Split primitives\\\"\", \"m_option\": \"\\\"false\\\"\", \"input\": \"null\"}", 
+            "tool_state": "{\"__page__\": null, \"max_length\": \"\\\"200\\\"\", \"__rerun_remap_job_id__\": null, \"keep_geno\": \"\\\"false\\\"\", \"keep_info\": \"\\\"false\\\"\", \"t_option\": \"\\\"Split primitives\\\"\", \"m_option\": \"\\\"false\\\"\", \"input\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 4369}]}\"}", 
             "tool_version": "1.0.0_rc1.0", 
             "type": "tool", 
-            "uuid": "14cc965f-e4d1-4ef1-adf8-3a6dfcd12aa5", 
+            "uuid": "58c3a5aa-163e-47a7-bba1-4a3d40765b70", 
             "workflow_outputs": []
         }, 
-        "3": {
+        "5": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff/4.3r.1", 
             "errors": null, 
-            "id": 3, 
+            "id": 5, 
             "input_connections": {
                 "input": {
-                    "id": 2, 
+                    "id": 4, 
                     "output_name": "out_file1"
                 }, 
                 "snpDb|snpeff_db": {
-                    "id": 1, 
+                    "id": 2, 
                     "output_name": "snpeff_db"
                 }
             }, 
@@ -167,7 +223,7 @@
                 }
             ], 
             "position": {
-                "left": 748, 
+                "left": 1055, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -181,10 +237,10 @@
             "tool_state": "{\"spliceSiteSize\": \"\\\"2\\\"\", \"filter\": \"{\\\"specificEffects\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"udLength\": \"\\\"5000\\\"\", \"inputFormat\": \"\\\"vcf\\\"\", \"spliceRegion\": \"{\\\"__current_case__\\\": 0, \\\"setSpliceRegions\\\": \\\"no\\\"}\", \"outputConditional\": \"{\\\"outputFormat\\\": \\\"vcf\\\", \\\"__current_case__\\\": 0}\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"filterOut\": \"null\", \"generate_stats\": \"\\\"true\\\"\", \"noLog\": \"\\\"true\\\"\", \"chr\": \"\\\"\\\"\", \"intervals\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"snpDb\": \"{\\\"snpeff_db\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"genomeSrc\\\": \\\"history\\\", \\\"reg_section\\\": {\\\"regulation\\\": \\\"\\\"}}\", \"offset\": \"\\\"default\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"transcripts\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"annotations\": \"null\"}", 
             "tool_version": "4.3r.1", 
             "type": "tool", 
-            "uuid": "6f96c885-e771-48fc-8689-211cb4f61a1e", 
+            "uuid": "3fcc4a2a-cb3f-4584-9da6-e916277a6b72", 
             "workflow_outputs": []
         }
     }, 
     "tags": [], 
-    "uuid": "157ece22-30ea-4926-8d3b-e6e677316cdf"
+    "uuid": "8f7eab9c-7e3e-43bb-a82a-6d0b607cb232"
 }
