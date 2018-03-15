@@ -1,0 +1,190 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "variant analysis", 
+    "format-version": "0.1", 
+    "name": "variant-analysis-freebayes-snpeff", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/freebayes/freebayes/1.1.0.46-0", 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FreeBayes", 
+                    "name": "reference_source"
+                }
+            ], 
+            "label": null, 
+            "name": "FreeBayes", 
+            "outputs": [
+                {
+                    "name": "output_vcf", 
+                    "type": "vcf"
+                }, 
+                {
+                    "name": "output_failed_alleles_bed", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "output_trace", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/freebayes/freebayes/1.1.0.46-0", 
+            "tool_shed_repository": {
+                "changeset_revision": "156b60c1530f", 
+                "name": "freebayes", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"reference_source\": \"{\\\"batchmode\\\": {\\\"input_bams\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"processmode\\\": \\\"individual\\\", \\\"__current_case__\\\": 0}, \\\"ref_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"reference_source_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 1, \\\"options_type_selector\\\": \\\"simple\\\"}\", \"target_limit_type\": \"{\\\"target_limit_type_selector\\\": \\\"do_not_limit\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "1.1.0.46-0", 
+            "type": "tool", 
+            "uuid": "1f61074b-11e6-4ac0-88e3-0ce782f6da5c", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "SnpEff Download", 
+            "outputs": [
+                {
+                    "name": "snpeff_db", 
+                    "type": "snpeffdb"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 411
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "68693743661e", 
+                "name": "snpeff", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"genome_version\": \"\\\"\\\"\"}", 
+            "tool_version": "4.3r.1", 
+            "type": "tool", 
+            "uuid": "66ae9a99-ce03-4f11-8d7f-59cf691b7d4d", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/vcfallelicprimitives/vcfallelicprimitives/1.0.0_rc1.0", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output_vcf"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "VcfAllelicPrimitives:", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "vcf"
+                }
+            ], 
+            "position": {
+                "left": 496, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/vcfallelicprimitives/vcfallelicprimitives/1.0.0_rc1.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "0a69cff7946e", 
+                "name": "vcfallelicprimitives", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"max_length\": \"\\\"200\\\"\", \"__rerun_remap_job_id__\": null, \"keep_geno\": \"\\\"false\\\"\", \"keep_info\": \"\\\"false\\\"\", \"t_option\": \"\\\"Split primitives\\\"\", \"m_option\": \"\\\"false\\\"\", \"input\": \"null\"}", 
+            "tool_version": "1.0.0_rc1.0", 
+            "type": "tool", 
+            "uuid": "14cc965f-e4d1-4ef1-adf8-3a6dfcd12aa5", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff/4.3r.1", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "out_file1"
+                }, 
+                "snpDb|snpeff_db": {
+                    "id": 1, 
+                    "output_name": "snpeff_db"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool SnpEff", 
+                    "name": "input"
+                }, 
+                {
+                    "description": "runtime parameter for tool SnpEff", 
+                    "name": "intervals"
+                }, 
+                {
+                    "description": "runtime parameter for tool SnpEff", 
+                    "name": "snpDb"
+                }, 
+                {
+                    "description": "runtime parameter for tool SnpEff", 
+                    "name": "transcripts"
+                }
+            ], 
+            "label": null, 
+            "name": "SnpEff", 
+            "outputs": [
+                {
+                    "name": "snpeff_output", 
+                    "type": "vcf"
+                }, 
+                {
+                    "name": "statsFile", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 748, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff/4.3r.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "68693743661e", 
+                "name": "snpeff", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"spliceSiteSize\": \"\\\"2\\\"\", \"filter\": \"{\\\"specificEffects\\\": \\\"no\\\", \\\"__current_case__\\\": 0}\", \"udLength\": \"\\\"5000\\\"\", \"inputFormat\": \"\\\"vcf\\\"\", \"spliceRegion\": \"{\\\"__current_case__\\\": 0, \\\"setSpliceRegions\\\": \\\"no\\\"}\", \"outputConditional\": \"{\\\"outputFormat\\\": \\\"vcf\\\", \\\"__current_case__\\\": 0}\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"filterOut\": \"null\", \"generate_stats\": \"\\\"true\\\"\", \"noLog\": \"\\\"true\\\"\", \"chr\": \"\\\"\\\"\", \"intervals\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"snpDb\": \"{\\\"snpeff_db\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"genomeSrc\\\": \\\"history\\\", \\\"reg_section\\\": {\\\"regulation\\\": \\\"\\\"}}\", \"offset\": \"\\\"default\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"transcripts\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"annotations\": \"null\"}", 
+            "tool_version": "4.3r.1", 
+            "type": "tool", 
+            "uuid": "6f96c885-e771-48fc-8689-211cb4f61a1e", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "157ece22-30ea-4926-8d3b-e6e677316cdf"
+}

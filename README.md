@@ -18,3 +18,4 @@
     + [wgcna.g]
 
 * **Variant Analysis**
+    + [variant-analysis-freebayes-snpeff.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/variant-analysis-freebayes-snpeff.ga)
