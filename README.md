@@ -15,7 +15,7 @@
     
 * **Transcriptomics**
     + [differential-expression-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/differential-expression-analysis.ga)
-    + [wgcna.g]
+    + [wgcna-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/wgcna-analysis.ga)
 
 * **Variant Analysis**
     + [variant-analysis-freebayes-snpeff.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/variant-analysis-freebayes-snpeff.ga)
