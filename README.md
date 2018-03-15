@@ -14,6 +14,8 @@
         + [genome_annotation.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome_annotation.ga)
     
 * **Transcriptomics**
+    + [transcripts-assembly-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-paired-end.ga)
+    + [transcripts-assembly-single-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-single-end.ga) 
     + [differential-expression-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/differential-expression-analysis.ga)
     + [wgcna-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/wgcna-analysis.ga)
 
