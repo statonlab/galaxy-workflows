@@ -5,7 +5,7 @@
     "name": "genome annotation (imported from uploaded file)", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "Genomic nucleotide sequence in FASTA format. Single input file should not be larger than 2G.",
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -31,7 +31,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
+            "annotation": "Protein sequences in FASTA format used as protein database. Single input file should not be larger than 2G.",
             "content_id": null, 
             "errors": null, 
             "id": 1, 
@@ -57,7 +57,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "", 
+            "annotation": "Predict genes from genomic nucleotide sequences.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/augustus/augustus/3.2.3", 
             "errors": null, 
             "id": 2, 
@@ -155,7 +155,7 @@
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "", 
+            "annotation": "Search a protein database using protein sequences obtained from the augustus tool.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.2.01", 
             "errors": null, 
             "id": 4, 
