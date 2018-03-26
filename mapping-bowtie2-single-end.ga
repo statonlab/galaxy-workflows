@@ -52,7 +52,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "Normalize format of read files so that downstream tools use them as inputs.",
+            "annotation": "Normalize format of read files for downstream tools.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "errors": null, 
             "id": 2, 
@@ -170,7 +170,7 @@
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "Generate descriptive stats for aligned reads in BAM format.",
+            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
             "id": 4, 
