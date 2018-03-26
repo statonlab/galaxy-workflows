@@ -2,12 +2,11 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "genome annotation (imported from uploaded file)", 
+    "name": "genome-annotation", 
     "steps": {
         "0": {
             "annotation": "Genomic nucleotide sequence in FASTA format. Single input file should not be larger than 2G.",
             "content_id": null, 
-            "errors": null, 
             "id": 0, 
             "input_connections": {}, 
             "inputs": [
@@ -23,6 +22,7 @@
                 "left": 200, 
                 "top": 200
             }, 
+            "tool_errors": null, 
             "tool_id": null, 
             "tool_state": "{\"name\": \"genome sequence\"}", 
             "tool_version": null, 
@@ -33,7 +33,6 @@
         "1": {
             "annotation": "Protein sequences in FASTA format used as protein database. Single input file should not be larger than 2G.",
             "content_id": null, 
-            "errors": null, 
             "id": 1, 
             "input_connections": {}, 
             "inputs": [
@@ -49,6 +48,7 @@
                 "left": 200, 
                 "top": 302
             }, 
+            "tool_errors": null, 
             "tool_id": null, 
             "tool_state": "{\"name\": \"protein database\"}", 
             "tool_version": null, 
@@ -59,7 +59,6 @@
         "2": {
             "annotation": "Predict genes from genomic nucleotide sequences.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/augustus/augustus/3.2.3", 
-            "errors": null, 
             "id": 2, 
             "input_connections": {
                 "input_genome": {
@@ -94,6 +93,7 @@
                 "top": 200
             }, 
             "post_job_actions": {}, 
+            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/augustus/augustus/3.2.3", 
             "tool_shed_repository": {
                 "changeset_revision": "4de31938431b", 
@@ -108,57 +108,9 @@
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/trna_prediction/aragorn_trna/0.6", 
-            "errors": null, 
-            "id": 3, 
-            "input_connections": {
-                "input": {
-                    "id": 0, 
-                    "output_name": "output"
-                }
-            }, 
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool tRNA and tmRNA", 
-                    "name": "input"
-                }
-            ], 
-            "label": null, 
-            "name": "tRNA and tmRNA", 
-            "outputs": [
-                {
-                    "name": "output", 
-                    "type": "fasta"
-                }, 
-                {
-                    "name": "gff3_output_file", 
-                    "type": "gff3"
-                }
-            ], 
-            "position": {
-                "left": 430, 
-                "top": 367
-            }, 
-            "post_job_actions": {}, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/trna_prediction/aragorn_trna/0.6", 
-            "tool_shed_repository": {
-                "changeset_revision": "358f58401cd6", 
-                "name": "trna_prediction", 
-                "owner": "bgruening", 
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            }, 
-            "tool_state": "{\"__page__\": 0, \"tmRNA\": \"\\\"true\\\"\", \"mtRNA\": \"\\\"false\\\"\", \"__rerun_remap_job_id__\": null, \"genbank_gencode\": \"\\\"11\\\"\", \"introns\": \"\\\"false\\\"\", \"mam_mtRNA\": \"\\\"false\\\"\", \"secondary_structure\": \"\\\"false\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"tRNA\": \"\\\"true\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"gff3_output\": \"\\\"false\\\"\", \"gff3_model\": \"\\\"false\\\"\", \"topology\": \"\\\"-c\\\"\"}", 
-            "tool_version": "0.6", 
-            "type": "tool", 
-            "uuid": "45b8d06a-730a-47de-a292-5d477f853d58", 
-            "workflow_outputs": []
-        }, 
-        "4": {
             "annotation": "Search a protein database using protein sequences obtained from the augustus tool.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.2.01", 
-            "errors": null, 
-            "id": 4, 
+            "id": 3, 
             "input_connections": {
                 "db_opts|subject": {
                     "id": 1, 
@@ -192,6 +144,7 @@
                 "top": 200
             }, 
             "post_job_actions": {}, 
+            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.2.01", 
             "tool_shed_repository": {
                 "changeset_revision": "6f386c5dc4fb", 
@@ -206,6 +159,5 @@
             "workflow_outputs": []
         }
     }, 
-    "tags": [], 
-    "uuid": "194567f3-de9e-48e5-b7bd-600c330ef9ef"
+    "uuid": "f6995a1e-9f92-4a69-b22d-1c5dff3dc9cc"
 }
