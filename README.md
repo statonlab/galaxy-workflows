@@ -11,7 +11,7 @@
         + [mapping-hisat2-single-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/mapping-hisat2-single-end.ga)
         + [mapping-hisat2-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/mapping-hisat2-paired-end.ga)
     - **genome annotation**
-        + [genome_annotation.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome_annotation.ga)
+        + [genome-annotation.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome-annotation.ga)
     
 * **Transcriptomics**
     + [transcripts-assembly-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-paired-end.ga)
