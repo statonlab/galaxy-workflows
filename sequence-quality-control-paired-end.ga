@@ -5,30 +5,34 @@
     "name": "sequence-quality-control-paired-end", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "Upload one or more paired-end read FASTQ files. Each file has to be smaller than 2G.", 
             "content_id": null, 
-            "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "Upload one or more paired-end read FASTQ files. Each file has to be smaller than 2G.", 
+                    "name": "Input Dataset Collection"
+                }
+            ], 
             "label": "list of paired reads", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
                 "left": 200, 
-                "top": 210.03125
+                "top": 200
             }, 
+            "tool_errors": null, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list:paired\"}", 
+            "tool_state": "{\"collection_type\": \"list:paired\", \"name\": \"Input Dataset Collection\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "d31e0726-cd9d-4841-9638-0b6b7b629cb3", 
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
-            "errors": null, 
+            "annotation": "This tool normalizes uploaded file format so that they can be used as inputs for downstream tools. Advanced Options of this tool are hidden and not available in this workflow.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", 
             "id": 1, 
             "input_connections": {
                 "input_file": {
@@ -52,34 +56,94 @@
             ], 
             "position": {
                 "left": 475, 
-                "top": 210.03125
+                "top": 200
             }, 
             "post_job_actions": {}, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", 
             "tool_shed_repository": {
-                "changeset_revision": "e4d28c94242d", 
+                "changeset_revision": "71e5fa25b8a2", 
                 "name": "fastq_groomer", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file|__identifier__\": \"\\\"reverse\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
-            "tool_version": "1.0.4", 
+            "tool_state": "{\"__page__\": 0, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "1.1.1", 
             "type": "tool", 
             "uuid": "f3de1300-b7cf-401e-9a3a-5a3aa47a0880", 
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
-            "errors": null, 
+            "annotation": "Reports quality of untrimmed reads.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
             "id": 2, 
+            "input_connections": {
+                "input_file": {
+                    "id": 1, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "contaminants"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "limits"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 803, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
+            "tool_shed_repository": {
+                "changeset_revision": "f2e8552cf1d0", 
+                "name": "fastqc", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.69", 
+            "type": "tool", 
+            "uuid": "792289f2-7c01-4f68-82a7-99f171579766", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "Trim low-quality reads.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
+            "id": 3, 
             "input_connections": {
                 "readtype|fastq_in": {
                     "id": 1, 
                     "output_name": "output_file"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Trimmomatic", 
+                    "name": "readtype"
+                }
+            ], 
             "label": null, 
             "name": "Trimmomatic", 
             "outputs": [
@@ -114,69 +178,78 @@
             ], 
             "position": {
                 "left": 803, 
-                "top": 210.03125
+                "top": 420
             }, 
             "post_job_actions": {}, 
+            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
             "tool_shed_repository": {
-                "changeset_revision": "415a165d92bb", 
+                "changeset_revision": "53af7b5b1b56", 
                 "name": "trimmomatic", 
                 "owner": "pjbriggs", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"operations\": \"[{\\\"__index__\\\": 0, \\\"operation\\\": {\\\"window_size\\\": \\\"4\\\", \\\"name\\\": \\\"SLIDINGWINDOW\\\", \\\"__current_case__\\\": 0, \\\"required_quality\\\": \\\"20\\\"}}]\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"readtype\": \"{\\\"single_or_paired\\\": \\\"se\\\", \\\"fastq_in\\\": null, \\\"__current_case__\\\": 0}\", \"illuminaclip\": \"{\\\"do_illuminaclip\\\": \\\"false\\\", \\\"__current_case__\\\": 1}\"}", 
+            "tool_state": "{\"operations\": \"[{\\\"__index__\\\": 0, \\\"operation\\\": {\\\"window_size\\\": \\\"4\\\", \\\"name\\\": \\\"SLIDINGWINDOW\\\", \\\"__current_case__\\\": 0, \\\"required_quality\\\": \\\"20\\\"}}]\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"readtype\": \"{\\\"single_or_paired\\\": \\\"se\\\", \\\"fastq_in\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0}\", \"illuminaclip\": \"{\\\"do_illuminaclip\\\": \\\"false\\\", \\\"__current_case__\\\": 1}\"}", 
             "tool_version": "0.36.4", 
             "type": "tool", 
             "uuid": "f6baa554-b97e-4817-8edc-811a9c615606", 
             "workflow_outputs": []
         }, 
-        "3": {
-            "annotation": "", 
-            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastqc/aurora_fastqc/2.1.0", 
-            "errors": null, 
-            "id": 3, 
+        "4": {
+            "annotation": "Report quality of trimmed reads.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
+            "id": 4, 
             "input_connections": {
-                "reads_1": {
-                    "id": 1, 
-                    "output_name": "output_file"
-                }, 
-                "reads_2": {
-                    "id": 2, 
+                "input_file": {
+                    "id": 3, 
                     "output_name": "fastq_out"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "contaminants"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "limits"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "input_file"
+                }
+            ], 
             "label": null, 
-            "name": "Aurora Fastqc", 
+            "name": "FastQC", 
             "outputs": [
                 {
-                    "name": "report", 
+                    "name": "html_file", 
                     "type": "html"
                 }, 
                 {
-                    "name": "sink_message", 
+                    "name": "text_file", 
                     "type": "txt"
                 }
             ], 
             "position": {
-                "left": 1049, 
-                "top": 210.03125
+                "left": 1131, 
+                "top": 200
             }, 
             "post_job_actions": {}, 
-            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastqc/aurora_fastqc/2.1.0", 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
             "tool_shed_repository": {
-                "changeset_revision": "04b6cc5d8929", 
-                "name": "aurora_fastqc", 
-                "owner": "mingchen0919", 
-                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+                "changeset_revision": "f2e8552cf1d0", 
+                "name": "fastqc", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"limits\": \"null\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"reads_1\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 4321}]}\", \"contaminants\": \"null\", \"reads_2\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 4321}]}\"}", 
-            "tool_version": "2.1.0", 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.69", 
             "type": "tool", 
-            "uuid": "9a0d1fa2-077f-4f6b-a5c2-7988768625dd", 
+            "uuid": "cced3756-f43e-4717-b84c-880c58a8e458", 
             "workflow_outputs": []
         }
     }, 
-    "tags": [], 
-    "uuid": "31288f7f-93bb-413a-94f3-65bf2b35163c"
+    "uuid": "953468d2-c641-4c38-b80f-a103106947c4"
 }
