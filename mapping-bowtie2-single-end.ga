@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "bowtie2-alignment-single-end",
+    "name": "mapping-bowtie2-single-end",
     "steps": {
         "0": {
             "annotation": "One or more single-end read FASTQ files. Each single file should be smaller than 2G.",
