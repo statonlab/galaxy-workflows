@@ -1,0 +1,191 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "mapping-hisat2-paired-end-fastq-dump", 
+    "steps": {
+        "0": {
+            "annotation": "Reference genome in FASTA format. File size has to be smaller than 2G.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Reference genome in FASTA format. File size has to be smaller than 2G.", 
+                    "name": "reference genome"
+                }
+            ], 
+            "label": "reference genome", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"reference genome\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "2e8c6281-19f7-4e77-b8b9-8a3999aca7ff", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_pe/1.0.0", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "aurora fastq-dump (paired end)", 
+            "outputs": [
+                {
+                    "name": "list_paired_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "sink_message", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 302
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_pe/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "668be0a63172", 
+                "name": "aurora_fastq_dump", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"accessions\": \"\\\"\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "cc251573-4900-48c3-b110-01251d6549e6", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "Align paired-end reads to reference genome.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "library|input_1": {
+                    "id": 1, 
+                    "output_name": "list_paired_collection"
+                }, 
+                "reference_genome|history_item": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool HISAT2", 
+                    "name": "library"
+                }, 
+                {
+                    "description": "runtime parameter for tool HISAT2", 
+                    "name": "reference_genome"
+                }
+            ], 
+            "label": null, 
+            "name": "HISAT2", 
+            "outputs": [
+                {
+                    "name": "output_alignments", 
+                    "type": "bam"
+                }, 
+                {
+                    "name": "output_unaligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_unaligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "summary_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 524, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "40e1083a4430", 
+                "name": "hisat2", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": 0, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"input_1|__identifier__\": \"\\\"reverse\\\"\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "2.1.0", 
+            "type": "tool", 
+            "uuid": "b43b4aaa-09e5-41e8-88a9-3e3d0d6962b1", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input1": {
+                    "id": 2, 
+                    "output_name": "output_alignments"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "Flagstat", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 852, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "cc61ade70eb8", 
+                "name": "samtools_flagstat", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input1|__identifier__\": \"\\\"reverse\\\"\"}", 
+            "tool_version": "2.0.1", 
+            "type": "tool", 
+            "uuid": "0286e608-9e57-48bd-8245-f3058dfb12e7", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "8c3e3f41-9973-42b7-bca0-f5e0b2e55c7e"
+}

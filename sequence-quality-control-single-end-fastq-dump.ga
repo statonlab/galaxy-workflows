@@ -1,0 +1,228 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "sequence-quality-control-single-end-fastq-dump", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_se/1.0.0", 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "aurora fastq-dump (single end)", 
+            "outputs": [
+                {
+                    "name": "list_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "sink_message", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_se/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "668be0a63172", 
+                "name": "aurora_fastq_dump", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"accessions\": \"\\\"\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "4f2cc8e1-b96e-46b8-becc-971cd27d151e", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "Reports quality of untrimmed reads.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "list_collection"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "contaminants"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "limits"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 522, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
+            "tool_shed_repository": {
+                "changeset_revision": "2b0c9d9fc6ca", 
+                "name": "fastqc", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.70", 
+            "type": "tool", 
+            "uuid": "2ff31967-66cb-4ec3-8e99-8ef9accb16eb", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "Trim low-quality reads.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "readtype|fastq_in": {
+                    "id": 0, 
+                    "output_name": "list_collection"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Trimmomatic", 
+                    "name": "readtype"
+                }
+            ], 
+            "label": null, 
+            "name": "Trimmomatic", 
+            "outputs": [
+                {
+                    "name": "fastq_out_paired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out_unpaired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out_r1_paired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out_r2_paired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out_r1_unpaired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out_r2_unpaired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 522, 
+                "top": 420
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
+            "tool_shed_repository": {
+                "changeset_revision": "415a165d92bb", 
+                "name": "trimmomatic", 
+                "owner": "pjbriggs", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"operations\": \"[{\\\"__index__\\\": 0, \\\"operation\\\": {\\\"window_size\\\": \\\"4\\\", \\\"name\\\": \\\"SLIDINGWINDOW\\\", \\\"__current_case__\\\": 0, \\\"required_quality\\\": \\\"20\\\"}}]\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"readtype\": \"{\\\"single_or_paired\\\": \\\"se\\\", \\\"fastq_in\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0}\", \"illuminaclip\": \"{\\\"do_illuminaclip\\\": \\\"false\\\", \\\"__current_case__\\\": 1}\"}", 
+            "tool_version": "0.36.4", 
+            "type": "tool", 
+            "uuid": "3da571ef-54f6-4a2d-ad85-0dd7435c7310", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "Report quality of trimmed reads.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input_file": {
+                    "id": 2, 
+                    "output_name": "fastq_out"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "contaminants"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "limits"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 850, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
+            "tool_shed_repository": {
+                "changeset_revision": "2b0c9d9fc6ca", 
+                "name": "fastqc", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.70", 
+            "type": "tool", 
+            "uuid": "1d1ba226-21a2-45e2-8df8-1cb48137a94e", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "78a1e399-ba63-4787-b668-90215f09355d"
+}

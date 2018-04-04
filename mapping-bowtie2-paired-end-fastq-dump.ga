@@ -1,0 +1,190 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "mapping-bowtie2-paired-end-fastq-dump", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_pe/1.0.0", 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "aurora fastq-dump (paired end)", 
+            "outputs": [
+                {
+                    "name": "list_paired_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "sink_message", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_pe/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "668be0a63172", 
+                "name": "aurora_fastq_dump", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"accessions\": \"\\\"\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "bfbb302c-3f8f-4487-8bd4-b66dca26598e", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "Reference genome in FASTA format. File size has to be smaller than 2G.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Reference genome", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 339
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "ee55811d-737e-4dca-b414-b88a70ce0681", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "Align paired-end reads to reference genome.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "library|input_1": {
+                    "id": 0, 
+                    "output_name": "list_paired_collection"
+                }, 
+                "reference_genome|own_file": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Bowtie2", 
+                    "name": "library"
+                }, 
+                {
+                    "description": "runtime parameter for tool Bowtie2", 
+                    "name": "reference_genome"
+                }
+            ], 
+            "label": null, 
+            "name": "Bowtie2", 
+            "outputs": [
+                {
+                    "name": "output_unaligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_unaligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output", 
+                    "type": "bam"
+                }, 
+                {
+                    "name": "output_sam", 
+                    "type": "sam"
+                }, 
+                {
+                    "name": "mapping_stats", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 524, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
+            "tool_shed_repository": {
+                "changeset_revision": "a9d4f71dbfb0", 
+                "name": "bowtie2", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"false\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"__current_case__\\\": 2, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"type\\\": \\\"paired_collection\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"__current_case__\\\": 1, \\\"own_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"simple\\\", \\\"presets\\\": \\\"no_presets\\\", \\\"__current_case__\\\": 0}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_version": "2.2.6.2", 
+            "type": "tool", 
+            "uuid": "ae5c2098-0ff0-4212-b1b1-6904d0268e55", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input1": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "Flagstat", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 852, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "cc61ade70eb8", 
+                "name": "samtools_flagstat", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input1|__identifier__\": \"\\\"100M_emerald_6.5_Sample12_L1..paired.trimmed\\\"\"}", 
+            "tool_version": "2.0.1", 
+            "type": "tool", 
+            "uuid": "10a8178f-0652-433b-9078-d651123548f9", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "dd4f69ff-3bca-47d8-ad51-7e14a102c823"
+}
