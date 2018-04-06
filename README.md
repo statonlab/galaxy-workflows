@@ -22,8 +22,10 @@
         + [mapping-hisat2-single-end-fastq-dump.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/mapping-hisat2-single-end-fastq-dump.ga)
         + [mapping-hisat2-paired-end-fastq-dump.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/mapping-hisat2-paired-end-fastq-dump.ga)
         
-    - **genome annotation**
+    - **Annotation**
         + [genome-annotation.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome-annotation.ga)
+        + [blast protein sequences](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/blast-protein-sequences.ga)
+        + [interproscan protein functional anlaysis](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/interproscan-protein-functional-analysis.ga)
     
 * **Transcriptomics**
     + [transcripts-assembly-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-paired-end.ga)
