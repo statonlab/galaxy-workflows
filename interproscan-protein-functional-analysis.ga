@@ -1,0 +1,78 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "interproscan-protein-functional-analysis", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Protein sequences (FASTA data)", 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list\"}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "703879cf-bfd7-4422-b42e-895964e3dfa9", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "fasta_input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool statonlab interproscan", 
+                    "name": "fasta_input"
+                }
+            ], 
+            "label": null, 
+            "name": "statonlab interproscan", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "sink_message", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 479, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "4aa0cec3399f", 
+                "name": "statonlab_interprocan", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"fasta_input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"goterms\": \"\\\"true\\\"\", \"output_format\": \"[\\\"XML\\\"]\", \"__rerun_remap_job_id__\": null, \"pathways\": \"\\\"true\\\"\", \"iprlookup\": \"\\\"true\\\"\", \"disable_precalc\": \"\\\"true\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "467b30d3-7646-4e60-8e19-08347294c818", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "96150096-37ea-4c76-bfcb-06aeec5e33b4"
+}
