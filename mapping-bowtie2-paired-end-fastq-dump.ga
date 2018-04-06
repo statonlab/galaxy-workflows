@@ -46,13 +46,13 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Reference genome in FASTA format. File size has to be smaller than 2G.", 
+            "annotation": "", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "Reference genome", 
+            "label": "Reference genome (FASTA data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -186,5 +186,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "dd4f69ff-3bca-47d8-ad51-7e14a102c823"
+    "uuid": "7b7d59d3-e55c-451a-8426-889514506776"
 }

@@ -5,26 +5,21 @@
     "name": "sequence-quality-control-single-end", 
     "steps": {
         "0": {
-            "annotation": "Upload one or more single-end read FASTQ files. Each single file should be smaller than 2G.", 
+            "annotation": "", 
             "content_id": null, 
+            "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "Upload one or more single-end read FASTQ files. Each single file should be smaller than 2G.", 
-                    "name": "Input Dataset Collection"
-                }
-            ], 
-            "label": "list of single end reads", 
+            "inputs": [], 
+            "label": "Single end reads (FASTQ data)", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
                 "left": 200, 
                 "top": 200
             }, 
-            "tool_errors": null, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\", \"name\": \"Input Dataset Collection\"}", 
+            "tool_state": "{\"collection_type\": \"list\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "b6a4c6fd-a71e-4523-be84-263527c6c913", 
@@ -32,7 +27,8 @@
         }, 
         "1": {
             "annotation": "This tool normalizes uploaded file format so that they can be used as inputs for downstream tools. Advanced Options of this tool are hidden and not available in this workflow.", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "errors": null, 
             "id": 1, 
             "input_connections": {
                 "input_file": {
@@ -59,23 +55,23 @@
                 "top": 200
             }, 
             "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "tool_shed_repository": {
-                "changeset_revision": "71e5fa25b8a2", 
+                "changeset_revision": "e4d28c94242d", 
                 "name": "fastq_groomer", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
-            "tool_version": "1.1.1", 
+            "tool_version": "1.0.4", 
             "type": "tool", 
             "uuid": "299d1913-e695-4602-b66a-550ecab54cbb", 
             "workflow_outputs": []
         }, 
         "2": {
             "annotation": "Reports quality of untrimmed reads.", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
+            "errors": null, 
             "id": 2, 
             "input_connections": {
                 "input_file": {
@@ -114,16 +110,15 @@
                 "top": 200
             }, 
             "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
             "tool_shed_repository": {
-                "changeset_revision": "f2e8552cf1d0", 
+                "changeset_revision": "2b0c9d9fc6ca", 
                 "name": "fastqc", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
-            "tool_version": "0.69", 
+            "tool_version": "0.70", 
             "type": "tool", 
             "uuid": "2ff31967-66cb-4ec3-8e99-8ef9accb16eb", 
             "workflow_outputs": []
@@ -131,6 +126,7 @@
         "3": {
             "annotation": "Trim low-quality reads.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
+            "errors": null, 
             "id": 3, 
             "input_connections": {
                 "readtype|fastq_in": {
@@ -181,10 +177,9 @@
                 "top": 420
             }, 
             "post_job_actions": {}, 
-            "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
             "tool_shed_repository": {
-                "changeset_revision": "53af7b5b1b56", 
+                "changeset_revision": "415a165d92bb", 
                 "name": "trimmomatic", 
                 "owner": "pjbriggs", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -197,7 +192,8 @@
         }, 
         "4": {
             "annotation": "Report quality of trimmed reads.", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
+            "errors": null, 
             "id": 4, 
             "input_connections": {
                 "input_file": {
@@ -236,20 +232,20 @@
                 "top": 200
             }, 
             "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.69", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
             "tool_shed_repository": {
-                "changeset_revision": "f2e8552cf1d0", 
+                "changeset_revision": "2b0c9d9fc6ca", 
                 "name": "fastqc", 
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
             "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
-            "tool_version": "0.69", 
+            "tool_version": "0.70", 
             "type": "tool", 
             "uuid": "1d1ba226-21a2-45e2-8df8-1cb48137a94e", 
             "workflow_outputs": []
         }
     }, 
-    "uuid": "9f29c4bd-e7f6-4eb5-a682-99b42b096056"
+    "tags": [], 
+    "uuid": "ce04f2a5-dd3c-4ace-9bcd-dfbe169f99da"
 }

@@ -11,7 +11,7 @@
             "id": 0, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "aligned reads in sam/bam format", 
+            "label": "Aligned reads (BAM/SAM data)", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
@@ -32,7 +32,7 @@
             "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "gene annotation file", 
+            "label": "Gene annotation (GFF data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -61,7 +61,16 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Aurora htseq", 
+                    "name": "alignment_files"
+                }, 
+                {
+                    "description": "runtime parameter for tool Aurora htseq", 
+                    "name": "gff"
+                }
+            ], 
             "label": null, 
             "name": "Aurora htseq", 
             "outputs": [
@@ -94,7 +103,7 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "testtoolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"sample_names\": \"\\\"\\\"\", \"feature_type\": \"\\\"exon\\\"\", \"format\": \"\\\"bam\\\"\", \"idattr\": \"\\\"gene_id\\\"\", \"__rerun_remap_job_id__\": null, \"stranded\": \"\\\"yes\\\"\", \"echo\": \"\\\"false\\\"\", \"minaqual\": \"\\\"10\\\"\", \"alignment_files\": \"null\", \"mode\": \"\\\"union\\\"\", \"gff\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 4243}]}\", \"order\": \"\\\"name\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"sample_names\": \"\\\"\\\"\", \"feature_type\": \"\\\"exon\\\"\", \"format\": \"\\\"bam\\\"\", \"idattr\": \"\\\"gene_id\\\"\", \"__rerun_remap_job_id__\": null, \"stranded\": \"\\\"yes\\\"\", \"echo\": \"\\\"false\\\"\", \"minaqual\": \"\\\"10\\\"\", \"alignment_files\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"mode\": \"\\\"union\\\"\", \"gff\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"order\": \"\\\"name\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "d36abdb6-4c75-4079-8cdd-58fd54035503", 
@@ -111,7 +120,16 @@
                     "output_name": "count_rdata"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Aurora DESeq2", 
+                    "name": "count_data"
+                }, 
+                {
+                    "description": "runtime parameter for tool Aurora DESeq2", 
+                    "name": "column_data"
+                }
+            ], 
             "label": null, 
             "name": "Aurora DESeq2", 
             "outputs": [
@@ -140,7 +158,7 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "testtoolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"fit_type\": \"\\\"parametric\\\"\", \"__page__\": null, \"count_data\": \"null\", \"column_data\": \"null\", \"design_formula\": \"\\\"\\\"\", \"test_type\": \"\\\"Wald\\\"\", \"echo\": \"\\\"true\\\"\", \"treatment_name\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"alpha\": \"\\\"0.1\\\"\", \"treated\": \"\\\"\\\"\", \"untreated\": \"\\\"\\\"\"}", 
+            "tool_state": "{\"fit_type\": \"\\\"parametric\\\"\", \"__page__\": null, \"count_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"column_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"design_formula\": \"\\\"\\\"\", \"test_type\": \"\\\"Wald\\\"\", \"echo\": \"\\\"true\\\"\", \"treatment_name\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"alpha\": \"\\\"0.1\\\"\", \"treated\": \"\\\"\\\"\", \"untreated\": \"\\\"\\\"\"}", 
             "tool_version": "2.2.0", 
             "type": "tool", 
             "uuid": "3035e302-a4d7-446a-87ec-dea58eae4031", 
@@ -148,5 +166,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "feb0bd57-7bca-4eef-bd42-9007258dad6d"
+    "uuid": "ce459589-cc7c-4861-afae-b9a3005288f4"
 }

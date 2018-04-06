@@ -5,13 +5,13 @@
     "name": "mapping-bowtie2-paired-end", 
     "steps": {
         "0": {
-            "annotation": "One or more paired-end read FASTQ files. Each single file should be smaller than 2G.",
+            "annotation": "", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "list of paired reads", 
+            "label": "Paired end reads (FASTQ data)", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
@@ -26,18 +26,13 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Reference genome in FASTA format. File size has to be smaller than 2G.",
+            "annotation": "", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "reference genome"
-                }
-            ], 
-            "label": "reference genome", 
+            "inputs": [], 
+            "label": "Reference genome (FASTA data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -45,14 +40,14 @@
                 "top": 285
             }, 
             "tool_id": null, 
-            "tool_state": "{\"name\": \"reference genome\"}", 
+            "tool_state": "{}", 
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "ee55811d-737e-4dca-b414-b88a70ce0681", 
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "Normalize format of read files for downstream tools.",
+            "annotation": "Normalize format of read files for downstream tools.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "errors": null, 
             "id": 2, 
@@ -95,7 +90,7 @@
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "Align paired-end reads to reference genome.",
+            "annotation": "Align paired-end reads to reference genome.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
             "errors": null, 
             "id": 3, 
@@ -170,7 +165,7 @@
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.",
+            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
             "id": 4, 
@@ -214,5 +209,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "90817cc0-4042-45d3-9ba0-ec341b98944c"
+    "uuid": "d625b013-6bc7-490d-9522-1fce6eb9c817"
 }

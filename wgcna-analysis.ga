@@ -5,18 +5,13 @@
     "name": "wgcna-analysis", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "Rows in the CSV file are genes and columns are samples.", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "expression data"
-                }
-            ], 
-            "label": "expression data", 
+            "inputs": [], 
+            "label": "Expression data (CSV data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -24,25 +19,20 @@
                 "top": 200
             }, 
             "tool_id": null, 
-            "tool_state": "{\"name\": \"expression data\"}", 
+            "tool_state": "{}", 
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "59af637d-27c8-4c89-af2d-3eb438f10f59", 
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
+            "annotation": "Rows in the CSV file are samples and columns are traits.", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "trait data"
-                }
-            ], 
-            "label": "trait data", 
+            "inputs": [], 
+            "label": "Trait data (CSV data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -50,7 +40,7 @@
                 "top": 285
             }, 
             "tool_id": null, 
-            "tool_state": "{\"name\": \"trait data\"}", 
+            "tool_state": "{}", 
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "799ef433-0bd5-4263-a205-082f3387abd9", 
@@ -203,5 +193,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "0f3c8cdb-5f58-4532-928e-a2a66fb45c5e"
+    "uuid": "ad461d56-fdeb-43ef-97de-768a55673132"
 }

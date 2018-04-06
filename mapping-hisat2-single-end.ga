@@ -5,13 +5,13 @@
     "name": "mapping-hisat2-single-end", 
     "steps": {
         "0": {
-            "annotation": "One or more single-end read FASTQ files. Each single file should be smaller than 2G.",
+            "annotation": "", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "list of single end reads", 
+            "label": "Single end reads (FASTQ data)", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
@@ -26,18 +26,13 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Reference genome in FASTA format. File size has to be smaller than 2G.",
+            "annotation": "", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "reference genome"
-                }
-            ], 
-            "label": "reference genome", 
+            "inputs": [], 
+            "label": "Reference genome (FASTA data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -45,14 +40,14 @@
                 "top": 302
             }, 
             "tool_id": null, 
-            "tool_state": "{\"name\": \"reference genome\"}", 
+            "tool_state": "{}", 
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "40dfcf21-d667-4624-b39d-9b5326b23e6a", 
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "Normalize format of read files for downstream tools.",
+            "annotation": "Normalize format of read files for downstream tools.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "errors": null, 
             "id": 2, 
@@ -95,7 +90,7 @@
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "Align single-end reads to reference genome.",
+            "annotation": "Align single-end reads to reference genome.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
             "errors": null, 
             "id": 3, 
@@ -166,7 +161,7 @@
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.",
+            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
             "id": 4, 
@@ -210,5 +205,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "11966391-57c0-4f08-9364-8203685480ab"
+    "uuid": "a6756161-0abd-424e-8612-2bc907afa215"
 }

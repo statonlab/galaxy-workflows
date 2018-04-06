@@ -5,18 +5,13 @@
     "name": "mapping-hisat2-paired-end-fastq-dump", 
     "steps": {
         "0": {
-            "annotation": "Reference genome in FASTA format. File size has to be smaller than 2G.", 
+            "annotation": "", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "Reference genome in FASTA format. File size has to be smaller than 2G.", 
-                    "name": "reference genome"
-                }
-            ], 
-            "label": "reference genome", 
+            "inputs": [], 
+            "label": "Reference genome (FASTA data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -24,7 +19,7 @@
                 "top": 200
             }, 
             "tool_id": null, 
-            "tool_state": "{\"name\": \"reference genome\"}", 
+            "tool_state": "{}", 
             "tool_version": null, 
             "type": "data_input", 
             "uuid": "2e8c6281-19f7-4e77-b8b9-8a3999aca7ff", 
@@ -187,5 +182,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "8c3e3f41-9973-42b7-bca0-f5e0b2e55c7e"
+    "uuid": "c52a5c8d-7894-4238-b458-027b81c9bdb0"
 }

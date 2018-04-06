@@ -10,13 +10,8 @@
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "Input Dataset Collection"
-                }
-            ], 
-            "label": null, 
+            "inputs": [], 
+            "label": "Aligned reads (BAM data)", 
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
@@ -24,7 +19,7 @@
                 "top": 200
             }, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\", \"name\": \"Input Dataset Collection\"}", 
+            "tool_state": "{\"collection_type\": \"list\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "ec9ec668-132e-40db-bf3b-778199cdf31f", 
@@ -37,7 +32,7 @@
             "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "reference sequence", 
+            "label": "Reference sequence (FASTA data)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -150,7 +145,12 @@
                     "output_name": "output_vcf"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool VcfAllelicPrimitives:", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "VcfAllelicPrimitives:", 
             "outputs": [
@@ -171,7 +171,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"max_length\": \"\\\"200\\\"\", \"__rerun_remap_job_id__\": null, \"keep_geno\": \"\\\"false\\\"\", \"keep_info\": \"\\\"false\\\"\", \"t_option\": \"\\\"Split primitives\\\"\", \"m_option\": \"\\\"false\\\"\", \"input\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 4369}]}\"}", 
+            "tool_state": "{\"__page__\": null, \"max_length\": \"\\\"200\\\"\", \"__rerun_remap_job_id__\": null, \"keep_geno\": \"\\\"false\\\"\", \"keep_info\": \"\\\"false\\\"\", \"t_option\": \"\\\"Split primitives\\\"\", \"m_option\": \"\\\"false\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0_rc1.0", 
             "type": "tool", 
             "uuid": "58c3a5aa-163e-47a7-bba1-4a3d40765b70", 
@@ -242,5 +242,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "8f7eab9c-7e3e-43bb-a82a-6d0b607cb232"
+    "uuid": "33ef39e7-e6f1-4d54-98c1-05672d4d3e89"
 }
