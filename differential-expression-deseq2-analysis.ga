@@ -1,0 +1,107 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "differential-expression-deseq2-analysis", 
+    "steps": {
+        "0": {
+            "annotation": "The first column is sample names; The remaining columns are read counts from each sample.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "count data (CSV)", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "ab6ace35-f5f5-4d93-a27a-b905b7fcf2d1", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "The first column are sample names (column name from the count data); The remaining columns are experimental treatments.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "column data (CSV)", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 285
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "cbdc2367-1c2d-4084-968d-cf9095b09df4", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_deseq2/aurora_deseq2_report/2.2.1", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "column_data": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "count_data": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_deseq2", 
+                    "name": "count_data"
+                }, 
+                {
+                    "description": "runtime parameter for tool aurora_deseq2", 
+                    "name": "column_data"
+                }
+            ], 
+            "label": null, 
+            "name": "aurora_deseq2", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "significant_genes", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 430, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_deseq2/aurora_deseq2_report/2.2.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "16b2b7c3606e", 
+                "name": "aurora_deseq2", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"fit_type\": \"\\\"parametric\\\"\", \"__page__\": null, \"count_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"column_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"design_formula\": \"\\\"\\\"\", \"test_type\": \"\\\"Wald\\\"\", \"treatment_name\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"alpha\": \"\\\"0.1\\\"\", \"treated\": \"\\\"\\\"\", \"untreated\": \"\\\"\\\"\"}", 
+            "tool_version": "2.2.1", 
+            "type": "tool", 
+            "uuid": "32c960cc-3b2e-472c-a11b-2bf0c1942104", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "897b18cc-ee3a-40ca-8f64-80c1fe1404c6"
+}

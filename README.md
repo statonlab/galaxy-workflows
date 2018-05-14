@@ -23,14 +23,16 @@
         + [mapping-hisat2-paired-end-fastq-dump.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/mapping-hisat2-paired-end-fastq-dump.ga)
         
     - **Annotation**
-        + [genome-annotation.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome-annotation.ga)
+        + [genome-annotation-augustus-blastp.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome-annotation-augustus-blastp.ga)
         + [blast protein sequences](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/blast-protein-sequences.ga)
         + [interproscan protein functional anlaysis](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/interproscan-protein-functional-analysis.ga)
     
 * **Transcriptomics**
     + [transcripts-assembly-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-paired-end.ga)
     + [transcripts-assembly-single-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-single-end.ga) 
-    + [differential-expression-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/differential-expression-analysis.ga)
+    + Differential expression analysis
+        - [htseq-counting-mapped-reads.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/htseq-count-mapped-reads.ga)
+        - [differential-expression-deseq2-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/differential-expression-deseq2-analysis.ga)
     + [wgcna-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/wgcna-analysis.ga)
 
 * **Variant Analysis**

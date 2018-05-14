@@ -1,0 +1,107 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "DESeq2 analysis", 
+    "format-version": "0.1", 
+    "name": "htseq-count-mapped-reads", 
+    "steps": {
+        "0": {
+            "annotation": "a set of aligned reads files in BAM/SAM format.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Aligned reads (BAM/SAM data)", 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list\"}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "832e40c2-a532-4c89-9d3f-0c19e0938fc2", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "Gene annotation data in gff/gff3 format.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Gene annotation (GFF/GFF3 data)", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 302
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "04bb1f34-8ac4-4b3c-ab6e-98f7a30a6e8a", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "Count reads in features with htseq-count for each BAM/SAM files and output a count file for all BAM/SAM files.", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_htseq/aurora_htseq_report/2.0.1", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "alignment_files": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "gff": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_htseq", 
+                    "name": "alignment_files"
+                }, 
+                {
+                    "description": "runtime parameter for tool aurora_htseq", 
+                    "name": "gff"
+                }
+            ], 
+            "label": null, 
+            "name": "aurora_htseq", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "count", 
+                    "type": "csv"
+                }
+            ], 
+            "position": {
+                "left": 475, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_htseq/aurora_htseq_report/2.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "70f25691901a", 
+                "name": "aurora_htseq", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"sample_names\": \"\\\"\\\"\", \"feature_type\": \"\\\"exon\\\"\", \"format\": \"\\\"bam\\\"\", \"idattr\": \"\\\"gene_id\\\"\", \"__rerun_remap_job_id__\": null, \"stranded\": \"\\\"yes\\\"\", \"minaqual\": \"\\\"10\\\"\", \"alignment_files\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"mode\": \"\\\"union\\\"\", \"gff\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"order\": \"\\\"name\\\"\"}", 
+            "tool_version": "2.0.1", 
+            "type": "tool", 
+            "uuid": "ab83026b-51f6-4d85-91c1-3dcb6561f38a", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "46349ee1-c0ef-4b95-a6cc-085fd180276f"
+}

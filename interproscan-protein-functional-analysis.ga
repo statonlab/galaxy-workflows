@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
+            "annotation": "Scan protein sequences against InterPro's signatures. Signatures are predictive models, provided by several different databases, that make up the InterPro.", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", 
             "errors": null, 
             "id": 1, 
@@ -74,5 +74,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "96150096-37ea-4c76-bfcb-06aeec5e33b4"
+    "uuid": "6a451ca0-ae38-4a3a-8b1a-8d99fb068801"
 }
