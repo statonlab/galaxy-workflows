@@ -30,7 +30,7 @@
 * **Transcriptomics**
     + [transcripts-assembly-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-paired-end.ga)
     + [transcripts-assembly-single-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-single-end.ga) 
-    + Differential expression analysis
+    + differential expression analysis
         - [htseq-counting-mapped-reads.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/htseq-count-mapped-reads.ga)
         - [differential-expression-deseq2-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/differential-expression-deseq2-analysis.ga)
     + [wgcna-analysis.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/wgcna-analysis.ga)
