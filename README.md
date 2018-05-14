@@ -24,8 +24,8 @@
         
     - **Annotation**
         + [genome-annotation-augustus-blastp.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/genome-annotation-augustus-blastp.ga)
-        + [blast protein sequences](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/blast-protein-sequences.ga)
-        + [interproscan protein functional anlaysis](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/interproscan-protein-functional-analysis.ga)
+        + [blast-protein-sequences.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/blast-protein-sequences.ga)
+        + [interproscan-protein-functional-anlaysis](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/interproscan-protein-functional-analysis.ga)
     
 * **Transcriptomics**
     + [transcripts-assembly-paired-end.ga](https://raw.githubusercontent.com/MingChen0919/galaxy-workflows/master/transcripts-assembly-paired-end.ga)
