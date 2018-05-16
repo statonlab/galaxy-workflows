@@ -46,13 +46,13 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
+            "annotation": "A fasta file or a txt file. If it is txt file, it should only has one line, which is an URL to a downloadable fasta file.", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "Reference genome (FASTA data)", 
+            "label": "Reference genome (fasta/txt)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -67,18 +67,65 @@
             "workflow_outputs": []
         }, 
         "2": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "upload_fasta": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer", 
+                    "name": "upload_fasta"
+                }
+            ], 
+            "label": null, 
+            "name": "aurora_fasta_importer", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "output_fasta", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 524, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "63e9ce43c1ee", 
+                "name": "aurora_fasta_importer", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "3e94e388-0022-479d-b078-e9f8b33bbb86", 
+            "workflow_outputs": []
+        }, 
+        "3": {
             "annotation": "Align paired-end reads to reference genome.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
             "errors": null, 
-            "id": 2, 
+            "id": 3, 
             "input_connections": {
                 "library|input_1": {
                     "id": 0, 
                     "output_name": "list_paired_collection"
                 }, 
                 "reference_genome|own_file": {
-                    "id": 1, 
-                    "output_name": "output"
+                    "id": 2, 
+                    "output_name": "output_fasta"
                 }
             }, 
             "inputs": [
@@ -124,7 +171,7 @@
                 }
             ], 
             "position": {
-                "left": 524, 
+                "left": 791, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -141,14 +188,14 @@
             "uuid": "ae5c2098-0ff0-4212-b1b1-6904d0268e55", 
             "workflow_outputs": []
         }, 
-        "3": {
+        "4": {
             "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
-            "id": 3, 
+            "id": 4, 
             "input_connections": {
                 "input1": {
-                    "id": 2, 
+                    "id": 3, 
                     "output_name": "output"
                 }
             }, 
@@ -167,7 +214,7 @@
                 }
             ], 
             "position": {
-                "left": 852, 
+                "left": 1119, 
                 "top": 200
             }, 
             "post_job_actions": {}, 
@@ -186,5 +233,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "7b7d59d3-e55c-451a-8426-889514506776"
+    "uuid": "1e676ed0-f3d2-4302-9772-b501d596f840"
 }

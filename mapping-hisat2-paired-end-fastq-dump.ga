@@ -5,10 +5,31 @@
     "name": "mapping-hisat2-paired-end-fastq-dump", 
     "steps": {
         "0": {
+            "annotation": "A fasta file or a txt file. If it is txt file, it should only has one line, which is an URL to a downloadable fasta file.", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Reference genome (fasta/txt)", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "0b42379a-ee04-4169-8b66-7de34b9c8120", 
+            "workflow_outputs": []
+        }, 
+        "1": {
             "annotation": "a set of paired-end reads files in FASTQ format.", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_pe/1.0.0", 
             "errors": null, 
-            "id": 0, 
+            "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
             "label": "Paired-end reads files (FASTQ)", 
@@ -29,7 +50,7 @@
             ], 
             "position": {
                 "left": 200, 
-                "top": 200
+                "top": 302
             }, 
             "post_job_actions": {}, 
             "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fastq_dump/fastq_dump_pe/1.0.0", 
@@ -45,35 +66,56 @@
             "uuid": "4a4fc76d-aa1e-456f-90e6-01ef0a160bfd", 
             "workflow_outputs": []
         }, 
-        "1": {
-            "annotation": "", 
-            "content_id": null, 
-            "errors": null, 
-            "id": 1, 
-            "input_connections": {}, 
-            "inputs": [], 
-            "label": "Reference genome (FASTA)", 
-            "name": "Input dataset", 
-            "outputs": [], 
-            "position": {
-                "left": 200, 
-                "top": 339
-            }, 
-            "tool_id": null, 
-            "tool_state": "{}", 
-            "tool_version": null, 
-            "type": "data_input", 
-            "uuid": "0b42379a-ee04-4169-8b66-7de34b9c8120", 
-            "workflow_outputs": []
-        }, 
         "2": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
             "errors": null, 
             "id": 2, 
             "input_connections": {
-                "input_file": {
+                "upload_fasta": {
                     "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "aurora_fasta_importer", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "output_fasta", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 524, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "63e9ce43c1ee", 
+                "name": "aurora_fasta_importer", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"upload_fasta\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6301}]}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "6bbee9be-95f3-45cd-9dd7-c09ad067eec7", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input_file": {
+                    "id": 1, 
                     "output_name": "list_paired_collection"
                 }
             }, 
@@ -93,7 +135,7 @@
             ], 
             "position": {
                 "left": 524, 
-                "top": 200
+                "top": 340
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
@@ -109,19 +151,19 @@
             "uuid": "7ae59c61-1fcd-4a5d-a1f9-4f9dcc296a43", 
             "workflow_outputs": []
         }, 
-        "3": {
+        "4": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
             "errors": null, 
-            "id": 3, 
+            "id": 4, 
             "input_connections": {
                 "library|input_1": {
-                    "id": 2, 
+                    "id": 3, 
                     "output_name": "output_file"
                 }, 
                 "reference_genome|history_item": {
-                    "id": 1, 
-                    "output_name": "output"
+                    "id": 2, 
+                    "output_name": "output_fasta"
                 }
             }, 
             "inputs": [
@@ -180,14 +222,14 @@
             "uuid": "7b57df9a-f22b-49ca-863d-1cd9b72d9eb4", 
             "workflow_outputs": []
         }, 
-        "4": {
+        "5": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
-            "id": 4, 
+            "id": 5, 
             "input_connections": {
                 "input1": {
-                    "id": 3, 
+                    "id": 4, 
                     "output_name": "output_alignments"
                 }
             }, 
@@ -225,5 +267,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "0e3e1f52-2dc7-445a-a3be-19e1040e206b"
+    "uuid": "8b63df39-4403-4491-bc8c-2c04d1650307"
 }

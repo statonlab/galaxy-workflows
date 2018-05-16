@@ -26,13 +26,13 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
+            "annotation": "A fasta file or a txt file. If it is txt file, it should only has one line, which is an URL to a downloadable fasta file.", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "Reference genome (FASTA data)", 
+            "label": "Reference genome (fasta/txt)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -90,18 +90,60 @@
             "workflow_outputs": []
         }, 
         "3": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "upload_fasta": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "aurora_fasta_importer", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "output_fasta", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 475, 
+                "top": 353
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "63e9ce43c1ee", 
+                "name": "aurora_fasta_importer", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"upload_fasta\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6301}]}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "a24338e6-4213-4a79-9a7f-06447be4f795", 
+            "workflow_outputs": []
+        }, 
+        "4": {
             "annotation": "Align single-end reads to reference genome.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.2.6.2", 
             "errors": null, 
-            "id": 3, 
+            "id": 4, 
             "input_connections": {
                 "library|input_1": {
                     "id": 2, 
                     "output_name": "output_file"
                 }, 
                 "reference_genome|own_file": {
-                    "id": 1, 
-                    "output_name": "output"
+                    "id": 3, 
+                    "output_name": "output_fasta"
                 }
             }, 
             "inputs": [
@@ -164,14 +206,14 @@
             "uuid": "8b9cc727-b979-4313-9c57-84da4f3db6c2", 
             "workflow_outputs": []
         }, 
-        "4": {
+        "5": {
             "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
-            "id": 4, 
+            "id": 5, 
             "input_connections": {
                 "input1": {
-                    "id": 3, 
+                    "id": 4, 
                     "output_name": "output"
                 }
             }, 
@@ -209,5 +251,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "c44fa064-343c-4148-8995-bb2b2c7d6e3c"
+    "uuid": "67739802-8832-41a9-aad1-7cb16473661e"
 }
