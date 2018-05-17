@@ -5,7 +5,7 @@
     "name": "htseq-count-mapped-reads", 
     "steps": {
         "0": {
-            "annotation": "a set of aligned reads files in BAM/SAM format.", 
+            "annotation": "<ul><li>Input one or more <b>aligned reads<\/b> files in <b>BAM/SAM<\/b> format.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -15,8 +15,8 @@
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 200, 
-                "top": 200
+                "left": 217.015625, 
+                "top": 217.40625
             }, 
             "tool_id": null, 
             "tool_state": "{\"collection_type\": \"list\"}", 
@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Gene annotation data in gff/gff3 format.", 
+            "annotation": "<ul><li>Input a gene annotation file in <b>gff/gff3<\/b> format.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
@@ -36,8 +36,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 200, 
-                "top": 302
+                "left": 217.015625, 
+                "top": 319.40625
             }, 
             "tool_id": null, 
             "tool_state": "{}", 
@@ -47,7 +47,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "Count reads in features with htseq-count for each BAM/SAM files and output a count file for all BAM/SAM files.", 
+            "annotation": "<ul>\n<li><b>aurora_htseq<\/b> is a wrapper of the <b>htseq-count<\/b> tool, which counts reads in features for each BAM/SAM files and output a count file for all BAM/SAM files.<\/li>\n<li><b>Feature type:<\/b> valid feature types can be found in the 3rd column of your GFF/GFF3 file.<\/li>\n<li><b>ID attribute:<\/b> by default, the <b>ID attribute<\/b> is <b>gene_id<\/b>. This might not be correct. You need to check the feature columns in your GFF/GFF3 file to find the correct ID attribute name.<\/li>\n<\/ul>", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_htseq/aurora_htseq_report/2.0.1", 
             "errors": null, 
             "id": 2, 
@@ -84,8 +84,8 @@
                 }
             ], 
             "position": {
-                "left": 475, 
-                "top": 200
+                "left": 492.015625, 
+                "top": 217.40625
             }, 
             "post_job_actions": {}, 
             "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_htseq/aurora_htseq_report/2.0.1", 
@@ -103,5 +103,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "46349ee1-c0ef-4b95-a6cc-085fd180276f"
+    "uuid": "dd9dadf5-d67c-4cd4-946b-f8c8b9cde9a3"
 }

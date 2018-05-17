@@ -5,7 +5,7 @@
     "name": "interproscan-protein-functional-analysis", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "<ul><li>Input one or more fasta files which have protein sequences. These sequences are referred as <b>\"query\" sequences.<\/b><\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -15,8 +15,8 @@
             "name": "Input dataset collection", 
             "outputs": [], 
             "position": {
-                "left": 200, 
-                "top": 200
+                "left": 282.265625, 
+                "top": 214.078125
             }, 
             "tool_id": null, 
             "tool_state": "{\"collection_type\": \"list\"}", 
@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Scan protein sequences against InterPro's signatures. Signatures are predictive models, provided by several different databases, that make up the InterPro.", 
+            "annotation": "<b>Interproscan<\/b> scans <b>protein query sequences<\/b> (input at step 2) against InterPro's signatures. Signatures are predictive models, provided by several different databases, that make up the InterPro.", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", 
             "errors": null, 
             "id": 1, 
@@ -55,8 +55,8 @@
                 }
             ], 
             "position": {
-                "left": 479, 
-                "top": 200
+                "left": 561.265625, 
+                "top": 214.078125
             }, 
             "post_job_actions": {}, 
             "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", 
@@ -74,5 +74,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "6a451ca0-ae38-4a3a-8b1a-8d99fb068801"
+    "uuid": "a55f30f9-160e-484b-9cac-d5709438c415"
 }

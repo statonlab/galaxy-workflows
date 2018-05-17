@@ -5,17 +5,12 @@
     "name": "variant-analysis-freebayes-snpeff", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "<ul><li>Input one or more <b>aligned reads<\/b> files in <b>bam<\/b> format.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "alignment datasets collection (bam)"
-                }
-            ], 
+            "inputs": [], 
             "label": "alignment datasets collection (bam)", 
             "name": "Input dataset collection", 
             "outputs": [], 
@@ -24,14 +19,14 @@
                 "top": 200
             }, 
             "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list\", \"name\": \"alignment datasets collection (bam)\"}", 
+            "tool_state": "{\"collection_type\": \"list\"}", 
             "tool_version": null, 
             "type": "data_collection_input", 
             "uuid": "36a1431f-7d47-4b3f-b66d-01937e593a07", 
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "A fasta file or a txt file. If it is txt file, it should only has one line, which is an URL to a downloadable fasta file.", 
+            "annotation": "<ul>\n<li>Option 1: input a <b>fasta<\/b> file which contains reference genome sequences<\/li>\n<li>Option 2: input a <b>txt<\/b> file which has a single URL to your reference genome sequences file. Valid file format include <b>.fasta<\/b>, <b>.fa.gz<\/b>, and <b>.2bit<\/b>.<\/li>\n<\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
@@ -52,7 +47,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "The Single Nucleotide Polymorphism database (dbSNP) is a public-domain archive for a broad collection of simple genetic polymorphisms.", 
+            "annotation": "<ul><li>The Single Nucleotide Polymorphism database (dbSNP) is a public-domain archive for a broad collection of simple genetic polymorphisms.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 2, 
@@ -73,7 +68,7 @@
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "", 
+            "annotation": "In order to produce the annotations, <b>SnpEff<\/b> requires a database. At this step, you will need to specify a database name. <b>SnpEff<\/b> will download and install the database automatically.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_download/4.3r.1", 
             "errors": null, 
             "id": 3, 
@@ -99,14 +94,14 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null, \"genome_version\": \"\\\"hg19\\\"\", \"__page__\": 0}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"genome_version\": \"\\\"hg19\\\"\"}", 
             "tool_version": "4.3r.1", 
             "type": "tool", 
             "uuid": "3fb674f4-087e-406c-8e16-443952f0d3c5", 
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "", 
+            "annotation": "<ul><li>At this step, the step 3 input is imported to the workflow. If the step 3 input is a fasta file, you can ignore the <b>URL fasta format<\/b> input. If the step 3 is a txt file, you need to specify the file format that the URL directs to.<\/li><\/ul>", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
             "errors": null, 
             "id": 4, 
@@ -116,7 +111,12 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer", 
+                    "name": "upload_fasta"
+                }
+            ], 
             "label": null, 
             "name": "aurora_fasta_importer", 
             "outputs": [
@@ -141,14 +141,14 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "testtoolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"upload_fasta\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6301}]}\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "e8219717-0220-40bb-91f0-b7f25bf7857a", 
             "workflow_outputs": []
         }, 
         "5": {
-            "annotation": "", 
+            "annotation": "<p>FreeBayes is a Bayesian genetic variant detector designed to find small polymorphisms, specifically SNPs (single-nucleotide polymorphisms), indels (insertions and deletions), MNPs (multi-nucleotide polymorphisms), and complex events (composite insertion and substitution events) smaller than the length of a short-read sequencing alignment. Please refer to https://github.com/ekg/freebayes for more information.<\/p>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/freebayes/freebayes/1.1.0.46-0", 
             "errors": null, 
             "id": 5, 
@@ -203,7 +203,7 @@
             "workflow_outputs": []
         }, 
         "6": {
-            "annotation": "If multiple alleleic primitives (gaps or mismatches) are specified in a single VCF record, this tools splits the record into multiple lines, but drops all INFO fields. \"Pure\" MNPs are split into multiple SNPs unless the -m flag is provided. Genotypes are phased where complex alleles have been decomposed, provided genotypes in the input.", 
+            "annotation": "<ul><li>If multiple alleleic primitives (gaps or mismatches) are specified in a single VCF record, this tools splits the record into multiple lines, but drops all INFO fields. \"Pure\" MNPs are split into multiple SNPs unless the -m flag is provided. Genotypes are phased where complex alleles have been decomposed, provided genotypes in the input.<\/li><\/ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/vcfallelicprimitives/vcfallelicprimitives/1.0.0_rc1.0", 
             "errors": null, 
             "id": 6, 
@@ -246,7 +246,7 @@
             "workflow_outputs": []
         }, 
         "7": {
-            "annotation": "", 
+            "annotation": "<ul><li><li>SbnpSift Filter<\/b> filters VCF file in order to find the \"interesting / relevant variants\".<\/li><ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_filter/4.3.0", 
             "errors": null, 
             "id": 7, 
@@ -282,14 +282,14 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"filtering\": \"{\\\"mode\\\": \\\"entries\\\", \\\"__current_case__\\\": 0}\", \"expr\": \"\\\"(QUAL >= 30 ) & (DP >= 10)\\\"\", \"__rerun_remap_job_id__\": null, \"inverse\": \"\\\"false\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"inverse\": \"\\\"false\\\"\", \"expr\": \"\\\"(QUAL >= 30 ) & (DP >= 10)\\\"\", \"__rerun_remap_job_id__\": null, \"filtering\": \"{\\\"mode\\\": \\\"entries\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "4.3.0", 
             "type": "tool", 
             "uuid": "4663df6f-aeec-4ddb-a601-791940e2337d", 
             "workflow_outputs": []
         }, 
         "8": {
-            "annotation": "Annotate using fields from another VCF file (e.g. dbSnp, 1000 Genomes projects, ClinVar, ExAC, etc.). This is typically used to annotate IDs and INFO fields from a 'database' VCF file (e.g. dbSnp).", 
+            "annotation": "<b>SnpSift Annotate<\/b> annotate VCF files by adding 'ID' and INFO fields from another \"VCF database\" (e.g. typically dbSnp database in VCF format).", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_annotate/4.3.0", 
             "errors": null, 
             "id": 8, 
@@ -340,7 +340,7 @@
             "workflow_outputs": []
         }, 
         "9": {
-            "annotation": "Annotates variants and predicts their effects", 
+            "annotation": "<b>SnpEff<\/b> is a variant annotation and effect prediction tool. It annotates and predicts the effects of genetic variants (such as amino acid changes).", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff/4.3r.1", 
             "errors": null, 
             "id": 9, 
@@ -404,5 +404,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "64bc2e8b-3b7b-49a8-a5b5-cc0017dc9542"
+    "uuid": "4c92f644-8eee-4e1e-a0b6-be326576f42d"
 }

@@ -1,0 +1,24 @@
+# Galaxy Workflows
+
+* **Quality Control**
+    + [sequence quality control (single-end)](sequence-quality-control-single-end)
+    + [sequence quality control (paired-end)](sequence-quality-control-paired-end)
+
+* **Sequence Analysis**
+    - **Mapping**
+        + [mapping single-end (bowtie2)](mapping-bowtie2-single-end)
+        + [mapping paired-end (bowtie2)](mapping-bowtie2-paired-end)
+        + [mapping single-end (hisat2)](mapping-hisat2-single-end)
+        + [mapping paired-end (hisat2)](mapping-hisat2-paired-end)
+
+    - **Annotation**
+        + [blast protein sequences](blast-protein-sequences)
+        + [interproscan protein functional analysis](interproscan-protein-functional-analysis)
+
+* **Transcriptomics**
+    + RNA-Seq differential expression analysis (htseq-count, deseq2)
+          - [counting mapped reads](htseq-count-mapped-reads)
+          - [differential expression DESeq2 analysis](differential-expression-deseq2-analysis)
+
+* **Variant Analysis**
+    + [Variant Analysis (freebayes, snpeff)](variant-analysis-freebayes-snpeff)

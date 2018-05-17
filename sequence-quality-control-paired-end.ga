@@ -5,7 +5,7 @@
     "name": "sequence-quality-control-paired-end", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "<ul><li>Input one or more <b>paired-end reads FASTQ<\/b> files.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "This tool normalizes uploaded file format so that they can be used as inputs for downstream tools. Advanced Options of this tool are hidden and not available in this workflow.", 
+            "annotation": "<ul>\n<li>The <b>FASTQ Groomer<\/b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.<\/li>\n<ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "errors": null, 
             "id": 1, 
@@ -62,14 +62,14 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.4", 
             "type": "tool", 
             "uuid": "f3de1300-b7cf-401e-9a3a-5a3aa47a0880", 
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "Reports quality of untrimmed reads.", 
+            "annotation": "<ul>\n<li><b>FastQC<\/b> provides a modular set of analyses which you can use to give a quick impression of whether your data has any problems of which you should be aware before doing any further analysis.<\/li>\n<\/ul>\n<li>We will run this tool twice. The first run checks the quality of untrimmed reads from step 2; the second run checks the quality of trimmed reads. Then we can compare the reads quality before and after trimming.<\/li>\n<\/ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
             "errors": null, 
             "id": 2, 
@@ -117,14 +117,14 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": null, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "0.70", 
             "type": "tool", 
             "uuid": "792289f2-7c01-4f68-82a7-99f171579766", 
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "Trim low-quality reads.", 
+            "annotation": "<ul>\n<li><b>Trimmomatic<\/b> performs a variety of useful trimming tasks for illumina paired-end and single ended data.<\/li>\n<\/ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4", 
             "errors": null, 
             "id": 3, 
@@ -184,14 +184,14 @@
                 "owner": "pjbriggs", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"operations\": \"[{\\\"__index__\\\": 0, \\\"operation\\\": {\\\"window_size\\\": \\\"4\\\", \\\"name\\\": \\\"SLIDINGWINDOW\\\", \\\"__current_case__\\\": 0, \\\"required_quality\\\": \\\"20\\\"}}]\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"readtype\": \"{\\\"single_or_paired\\\": \\\"se\\\", \\\"fastq_in\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0}\", \"illuminaclip\": \"{\\\"do_illuminaclip\\\": \\\"false\\\", \\\"__current_case__\\\": 1}\"}", 
+            "tool_state": "{\"operations\": \"[{\\\"__index__\\\": 0, \\\"operation\\\": {\\\"window_size\\\": \\\"4\\\", \\\"name\\\": \\\"SLIDINGWINDOW\\\", \\\"__current_case__\\\": 0, \\\"required_quality\\\": \\\"20\\\"}}]\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"readtype\": \"{\\\"single_or_paired\\\": \\\"se\\\", \\\"fastq_in\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0}\", \"illuminaclip\": \"{\\\"do_illuminaclip\\\": \\\"false\\\", \\\"__current_case__\\\": 1}\"}", 
             "tool_version": "0.36.4", 
             "type": "tool", 
             "uuid": "f6baa554-b97e-4817-8edc-811a9c615606", 
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "Report quality of trimmed reads.", 
+            "annotation": "<ul>\n<li><b>FastQC<\/b> provides a modular set of analyses which you can use to give a quick impression of whether your data has any problems of which you should be aware before doing any further analysis.<\/li>\n<\/ul>\n<li>At this step, we run <b>FastQC<\/b> to check quality of trimmed reads from step 5.<\/li>\n<\/ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.70", 
             "errors": null, 
             "id": 4, 
@@ -239,7 +239,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": null, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "0.70", 
             "type": "tool", 
             "uuid": "cced3756-f43e-4717-b84c-880c58a8e458", 
@@ -247,5 +247,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "5fed93ce-d553-4ef8-8e56-e9fa342f5850"
+    "uuid": "79a49c4d-37ab-4f0e-acae-58de8f626468"
 }

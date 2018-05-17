@@ -5,7 +5,7 @@
     "name": "differential-expression-deseq2-analysis", 
     "steps": {
         "0": {
-            "annotation": "The first column is sample names; The remaining columns are read counts from each sample.", 
+            "annotation": "<ul>\n<li>Input read counts data in CSV format.<\/li>\n<li>The first column are sample names<\/li>\n<li>The remaining columns are read counts from each sample.<\/li>\n<\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "The first column are sample names (column name from the count data); The remaining columns are experimental treatments.", 
+            "annotation": "<ul>\n<li>Input sample information data in CSV format.<\/li>\n<li>The first column are sample names. Sample names have to match with column names in the count data from step 2.<\/li>\n<li>The remaining columns are experimental treatments.<\/li>\n<\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
@@ -47,7 +47,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "", 
+            "annotation": "<ul>\n<li><b>aurora_deseq2<\/b> performs differential expression analysis with the  R package.<\/li>\n<li><b>Design formula:<\/b> an R formula to include effects of treatments of interest. For example, in the formula <code>~ condition + phenotype<\/code>, <b>condition<\/b> and <b>phenotype<\/b> are two treatments that you want to include in the test. Treatments in the formula have to be sample names in the count data from step 2.<\/li>\n<li><b>Treatment name<\/b>: specify a treatment to explore differential gene expression. It has to be a sample name from the count data from step 2.<\/li>\n<li><b>Treated:<\/b> a category (or group) from the specified treatment used as a treated group in comparison..<\/li>\n<li><b>Untreated:<\/b> a category (or group) from the specified treatment used as a control group in comparison.<\/li> \n<\/ul>", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_deseq2/aurora_deseq2_report/2.2.1", 
             "errors": null, 
             "id": 2, 
@@ -103,5 +103,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "897b18cc-ee3a-40ca-8f64-80c1fe1404c6"
+    "uuid": "8a1092b4-33e0-4b81-a755-9bc05912e7e2"
 }

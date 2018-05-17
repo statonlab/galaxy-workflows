@@ -5,44 +5,18 @@
     "name": "mapping-hisat2-paired-end", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "<ul>\n<li>Option 1: input a <b>fasta<\/b> file which contains reference genome sequences<\/li>\n<li>Option 2: input a <b>txt<\/b> file which has a single URL to your reference genome sequences file. Valid file format include <b>.fasta<\/b>, <b>.fa.gz<\/b>, and <b>.2bit<\/b>.<\/li>\n<\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
             "input_connections": {}, 
-            "inputs": [
-                {
-                    "description": "", 
-                    "name": "Input Dataset Collection"
-                }
-            ], 
-            "label": null, 
-            "name": "Input dataset collection", 
-            "outputs": [], 
-            "position": {
-                "left": 200, 
-                "top": 200
-            }, 
-            "tool_id": null, 
-            "tool_state": "{\"collection_type\": \"list:paired\", \"name\": \"Input Dataset Collection\"}", 
-            "tool_version": null, 
-            "type": "data_collection_input", 
-            "uuid": "4b4bac3f-634b-4345-99ec-8124a3c35d51", 
-            "workflow_outputs": []
-        }, 
-        "1": {
-            "annotation": "", 
-            "content_id": null, 
-            "errors": null, 
-            "id": 1, 
-            "input_connections": {}, 
             "inputs": [], 
-            "label": null, 
+            "label": "Reference genome (fasta/txt)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
                 "left": 200, 
-                "top": 285
+                "top": 200
             }, 
             "tool_id": null, 
             "tool_state": "{}", 
@@ -51,14 +25,82 @@
             "uuid": "0b42379a-ee04-4169-8b66-7de34b9c8120", 
             "workflow_outputs": []
         }, 
+        "1": {
+            "annotation": "<ul><li>Input one or more paires of <b>paired-end reads FASTQ<\/b> files.<\/li><\/ul>", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Paired-end reads (FASTQ)", 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 302
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list:paired\"}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "4b4bac3f-634b-4345-99ec-8124a3c35d51", 
+            "workflow_outputs": []
+        }, 
         "2": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "annotation": "<ul><li>At this step, the step 2 input is imported to the workflow. If the step 2 input is a fasta file, you can ignore the <b>URL fasta format<\/b> input. If the step 2 is a txt file, you need to specify the file format that the URL directs to.<\/li><\/ul>", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
             "errors": null, 
             "id": 2, 
             "input_connections": {
-                "input_file": {
+                "upload_fasta": {
                     "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer", 
+                    "name": "upload_fasta"
+                }
+            ], 
+            "label": null, 
+            "name": "aurora_fasta_importer", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "output_fasta", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 475, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "63e9ce43c1ee", 
+                "name": "aurora_fasta_importer", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "36555549-9b45-4d2a-8e6d-dba12938f072", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "<ul>\n<li>The <b>FASTQ Groomer<\/b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.<\/li>\n<ul>", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input_file": {
+                    "id": 1, 
                     "output_name": "output"
                 }
             }, 
@@ -78,7 +120,7 @@
             ], 
             "position": {
                 "left": 475, 
-                "top": 200
+                "top": 340
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
@@ -88,25 +130,25 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"__workflow_invocation_uuid__\": \"\\\"922fa2c7577a11e89a0c002590690502\\\"\", \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file|__identifier__\": \"\\\"forward\\\"\", \"chromInfo\": \"\\\"/main/sites/galaxy/galaxy/htdocs/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.4", 
             "type": "tool", 
             "uuid": "7ae59c61-1fcd-4a5d-a1f9-4f9dcc296a43", 
             "workflow_outputs": []
         }, 
-        "3": {
-            "annotation": "", 
+        "4": {
+            "annotation": "<b>HISAT2<\/b> is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome). It uses a graph-based alignment and has succeeded HISAT and TOPHAT2.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
             "errors": null, 
-            "id": 3, 
+            "id": 4, 
             "input_connections": {
                 "library|input_1": {
-                    "id": 2, 
+                    "id": 3, 
                     "output_name": "output_file"
                 }, 
                 "reference_genome|history_item": {
-                    "id": 1, 
-                    "output_name": "output"
+                    "id": 2, 
+                    "output_name": "output_fasta"
                 }
             }, 
             "inputs": [
@@ -159,24 +201,29 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"paired_collection\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 2, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"chromInfo\": \"\\\"/main/sites/galaxy/galaxy/htdocs/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
+            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"paired_collection\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 2, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null}", 
             "tool_version": "2.1.0", 
             "type": "tool", 
             "uuid": "7b57df9a-f22b-49ca-863d-1cd9b72d9eb4", 
             "workflow_outputs": []
         }, 
-        "4": {
-            "annotation": "", 
+        "5": {
+            "annotation": "<ul><li><b>samtools's flagstat<\/b> tool generate descriptive stats for aligned reads in BAM format.<\/li><\/ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
-            "id": 4, 
+            "id": 5, 
             "input_connections": {
                 "input1": {
-                    "id": 3, 
+                    "id": 4, 
                     "output_name": "output_alignments"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat", 
+                    "name": "input1"
+                }
+            ], 
             "label": null, 
             "name": "Flagstat", 
             "outputs": [
@@ -197,7 +244,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6185}]}\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "2.0.1", 
             "type": "tool", 
             "uuid": "cd3d05f8-fad9-4eff-8485-e0cf752aab27", 
@@ -205,5 +252,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "cb0648d2-0113-470e-9553-8253d0cbdb1b"
+    "uuid": "adf99767-570c-4729-911f-621982c27ca5"
 }

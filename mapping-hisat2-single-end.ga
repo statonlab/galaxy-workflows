@@ -5,7 +5,7 @@
     "name": "mapping-hisat2-single-end", 
     "steps": {
         "0": {
-            "annotation": "A fasta file or a txt file. If it is txt file, it should only has one line, which is an URL to a downloadable fasta file.", 
+            "annotation": "<ul>\n<li>Option 1: input a <b>fasta<\/b> file which contains reference genome sequences<\/li>\n<li>Option 2: input a <b>txt<\/b> file which has a single URL to your reference genome sequences file. Valid file format include <b>.fasta<\/b>, <b>.fa.gz<\/b>, and <b>.2bit<\/b>.<\/li>\n<\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "", 
+            "annotation": "<ul><li>Input one or more <b>single-end reads FASTQ<\/b> files.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
@@ -47,7 +47,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "", 
+            "annotation": "<ul><li>At this step, the step 2 input is imported to the workflow. If the step 2 input is a fasta file, you can ignore the <b>URL fasta format<\/b> input. If the step 2 is a txt file, you need to specify the file format that the URL directs to.<\/li><\/ul>", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
             "errors": null, 
             "id": 2, 
@@ -57,7 +57,12 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer", 
+                    "name": "upload_fasta"
+                }
+            ], 
             "label": null, 
             "name": "aurora_fasta_importer", 
             "outputs": [
@@ -82,14 +87,14 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "testtoolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"upload_fasta\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6301}]}\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "d2bb9964-b8d3-4e41-98ec-d0f3250193f4", 
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "Normalize format of read files for downstream tools.", 
+            "annotation": "<ul>\n<li>The <b>FASTQ Groomer<\/b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.<\/li>\n<ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
             "errors": null, 
             "id": 3, 
@@ -125,14 +130,14 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file|__identifier__\": \"\\\"100H_4_0_S31_R1_001_combined.fastq\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.4", 
             "type": "tool", 
             "uuid": "299d1913-e695-4602-b66a-550ecab54cbb", 
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "Align single-end reads to reference genome.", 
+            "annotation": "<b>HISAT2<\/b> is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes (as well as to a single reference genome). It uses a graph-based alignment and has succeeded HISAT and TOPHAT2.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
             "errors": null, 
             "id": 4, 
@@ -149,11 +154,11 @@
             "inputs": [
                 {
                     "description": "runtime parameter for tool HISAT2", 
-                    "name": "library"
+                    "name": "reference_genome"
                 }, 
                 {
                     "description": "runtime parameter for tool HISAT2", 
-                    "name": "reference_genome"
+                    "name": "library"
                 }
             ], 
             "label": null, 
@@ -196,14 +201,14 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": 0, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"input_1|__identifier__\": \"\\\"100H_4_0_S31_R1_001_combined.fastq\\\"\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null}", 
+            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null}", 
             "tool_version": "2.1.0", 
             "type": "tool", 
             "uuid": "26b7457f-7a42-4f65-bd69-63965e12724f", 
             "workflow_outputs": []
         }, 
         "5": {
-            "annotation": "Generate descriptive stats for aligned reads in BAM format. Option settings for this tool is not available in this workflow.", 
+            "annotation": "<ul><li><b>samtools's flagstat<\/b> tool generate descriptive stats for aligned reads in BAM format.<\/li><\/ul>", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
             "errors": null, 
             "id": 5, 
@@ -239,7 +244,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input1|__identifier__\": \"\\\"100H_4_0_S31_R1_001_combined.fastq\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "2.0.1", 
             "type": "tool", 
             "uuid": "b9b86f80-05bb-4109-b39a-98137164e0ab", 
@@ -247,5 +252,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "be812010-959b-4931-ae1e-197433dba69a"
+    "uuid": "cc945074-e34d-462a-837e-872e3d9e8bfa"
 }

@@ -5,7 +5,7 @@
     "name": "blast-protein-sequences", 
     "steps": {
         "0": {
-            "annotation": "", 
+            "annotation": "<ul><li>Input a fasta file which has protein query sequences.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -26,13 +26,13 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Fasta file used to generate the protein database", 
+            "annotation": "<ul>\n<li>Option 1: input a fasta file which has protein subject sequences. These protein sequences will be used to generate the database to search against.<\/li>\n<li>Option 2: input a txt file which has a single URL to a protein sequences file. Valid file format include <b>.fasta<\/b>, <b>.fa.gz<\/b>, and <b>.2bit<\/b>.<\/li><\/ul>", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
             "input_connections": {}, 
             "inputs": [], 
-            "label": "Protein database (FASTA data)", 
+            "label": "Protein database (fasta/txt)", 
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
@@ -47,17 +47,22 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "", 
+            "annotation": "<ul><li>At this step, the step 3 input is imported to the workflow. If the step 3 input is a fasta file, you can ignore the <b>URL fasta format<\/b> input. If the step 3 is a txt file, you need to specify the file format that the URL directs to.<\/li><\/ul>", 
             "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
             "errors": null, 
             "id": 2, 
             "input_connections": {
                 "upload_fasta": {
-                    "id": 0, 
+                    "id": 1, 
                     "output_name": "output"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer", 
+                    "name": "upload_fasta"
+                }
+            ], 
             "label": null, 
             "name": "aurora_fasta_importer", 
             "outputs": [
@@ -82,67 +87,25 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "testtoolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6366}]}\"}", 
-            "tool_version": "1.0.0", 
-            "type": "tool", 
-            "uuid": "e6b022a0-6588-4702-ae2a-e52613fdd924", 
-            "workflow_outputs": []
-        }, 
-        "3": {
-            "annotation": "", 
-            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
-            "errors": null, 
-            "id": 3, 
-            "input_connections": {
-                "upload_fasta": {
-                    "id": 1, 
-                    "output_name": "output"
-                }
-            }, 
-            "inputs": [], 
-            "label": null, 
-            "name": "aurora_fasta_importer", 
-            "outputs": [
-                {
-                    "name": "report", 
-                    "type": "html"
-                }, 
-                {
-                    "name": "output_fasta", 
-                    "type": "fasta"
-                }
-            ], 
-            "position": {
-                "left": 430, 
-                "top": 340
-            }, 
-            "post_job_actions": {}, 
-            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", 
-            "tool_shed_repository": {
-                "changeset_revision": "63e9ce43c1ee", 
-                "name": "aurora_fasta_importer", 
-                "owner": "mingchen0919", 
-                "tool_shed": "testtoolshed.g2.bx.psu.edu"
-            }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"values\\\": [{\\\"src\\\": \\\"hda\\\", \\\"id\\\": 6366}]}\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "5531139b-ccd5-41d1-9505-81ff8bdbbcbd", 
             "workflow_outputs": []
         }, 
-        "4": {
-            "annotation": "", 
+        "3": {
+            "annotation": "<b>BLAST + blastp<\/b> uses the Basic Local Alignment Search algorithm to <b>search protein subject sequences<\/b> (which is the input at step 3) and find similar sequences to your <b>protein query sequences<\/b> (which is the input at step 2).", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.2.01", 
             "errors": null, 
-            "id": 4, 
+            "id": 3, 
             "input_connections": {
                 "db_opts|subject": {
-                    "id": 3, 
+                    "id": 2, 
                     "output_name": "output_fasta"
                 }, 
                 "query": {
-                    "id": 2, 
-                    "output_name": "output_fasta"
+                    "id": 0, 
+                    "output_name": "output"
                 }
             }, 
             "inputs": [
@@ -175,7 +138,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"__page__\": 0, \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"file\\\", \\\"subject\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"histdb\\\": \\\"\\\", \\\"__current_case__\\\": 2, \\\"database\\\": \\\"\\\"}\", \"query\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"blast_type\": \"\\\"blastp\\\"\", \"output\": \"{\\\"out_format\\\": \\\"5\\\", \\\"__current_case__\\\": 3}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"__page__\": null, \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"file\\\", \\\"subject\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"histdb\\\": \\\"\\\", \\\"__current_case__\\\": 2, \\\"database\\\": \\\"\\\"}\", \"query\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"blast_type\": \"\\\"blastp\\\"\", \"output\": \"{\\\"out_format\\\": \\\"5\\\", \\\"__current_case__\\\": 3}\"}", 
             "tool_version": "0.2.01", 
             "type": "tool", 
             "uuid": "28806bc9-ab4b-4530-b3ce-eb504f8ea993", 
@@ -183,5 +146,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "99ed3bdb-09b0-47e5-b61e-952a5740be51"
+    "uuid": "c5c46d38-17b9-4012-8652-e895869f9eb1"
 }
