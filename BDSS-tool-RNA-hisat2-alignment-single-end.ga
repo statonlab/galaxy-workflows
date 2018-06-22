@@ -1,0 +1,186 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "BDSS-tool-RNA-hisat2-alignment-single-end", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Reference genome", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 200
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "45d7dcd5-31e1-48e7-ab43-fd24ff7e59d6", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_bdss_sra/aurora_bdss_sra_report/1.0.0", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": "Single end reads (FASTQ)", 
+            "name": "aurora_bdss_sra", 
+            "outputs": [
+                {
+                    "name": "list_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "list:paired_collection", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "report", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 200, 
+                "top": 285
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_bdss_sra/aurora_bdss_sra_report/1.0.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "4b73dbd97a0e", 
+                "name": "aurora_bdss_sra", 
+                "owner": "mingchen0919", 
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"sra_ids_pe\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"sra_ids_se\": \"\\\"\\\"\", \"format\": \"\\\"fastq\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "96c7f62d-fb6f-44fc-95e4-02c3442d4588", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "library|input_1": {
+                    "id": 1, 
+                    "output_name": "list_collection"
+                }, 
+                "reference_genome|history_item": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool HISAT2", 
+                    "name": "reference_genome"
+                }, 
+                {
+                    "description": "runtime parameter for tool HISAT2", 
+                    "name": "library"
+                }
+            ], 
+            "label": null, 
+            "name": "HISAT2", 
+            "outputs": [
+                {
+                    "name": "output_alignments", 
+                    "type": "bam"
+                }, 
+                {
+                    "name": "output_unaligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_l", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_unaligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "output_aligned_reads_r", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "summary_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 435, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "40e1083a4430", 
+                "name": "hisat2", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "2.1.0", 
+            "type": "tool", 
+            "uuid": "6e29a0d0-15fd-4563-8aef-6cfb6bd29a8f", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input1": {
+                    "id": 2, 
+                    "output_name": "output_alignments"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "Flagstat", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 763, 
+                "top": 200
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "cc61ade70eb8", 
+                "name": "samtools_flagstat", 
+                "owner": "devteam", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "2.0.1", 
+            "type": "tool", 
+            "uuid": "cce3efdd-a2ba-4d6b-b146-73b40c05111f", 
+            "workflow_outputs": []
+        }
+    }, 
+    "tags": [], 
+    "uuid": "5947ea4f-d30c-440b-9313-13f3eeadd383"
+}
