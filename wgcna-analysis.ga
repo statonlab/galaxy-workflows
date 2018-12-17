@@ -87,7 +87,7 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"expression_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"expression_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\"}", 
             "tool_version": "1.0.2", 
             "type": "tool", 
             "uuid": "792985fb-91e7-4baa-aebc-b33f67f76de7", 
@@ -142,7 +142,7 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"trait_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"height_cut\": \"\\\"15.0\\\"\", \"preprocessing_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": 0, \"trait_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"height_cut\": \"\\\"15.0\\\"\", \"preprocessing_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
             "tool_version": "1.0.2", 
             "type": "tool", 
             "uuid": "7a4d1033-c40f-4592-bf63-9402e6af2728", 
@@ -185,7 +185,7 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"plot_genes\": \"\\\"400\\\"\", \"construct_network_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"soft_threshold_power\": \"\\\"6\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"plot_genes\": \"\\\"400\\\"\", \"construct_network_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"soft_threshold_power\": \"\\\"6\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
             "tool_version": "1.0.2", 
             "type": "tool", 
             "uuid": "bffe29fa-ac66-4db7-95ff-df5937e0a65d", 
@@ -193,5 +193,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "e0571d4f-5c47-446c-9eeb-e4b48a99262e"
+    "uuid": "ad461d56-fdeb-43ef-97de-768a55673132"
 }
