@@ -5,7 +5,7 @@
     "name": "wgcna-analysis", 
     "steps": {
         "0": {
-            "annotation": "Rows in the CSV file are genes and columns are samples.", 
+            "annotation": "At this step the Gene Expression Matrix (GEM) is provided.  It is a comma-separated (CSV) format file where each line of the file represents a gene and each \"column\" represents a single RNA-seq sample.  The data consists of  expression level quantification values.", 
             "content_id": null, 
             "errors": null, 
             "id": 0, 
@@ -26,7 +26,7 @@
             "workflow_outputs": []
         }, 
         "1": {
-            "annotation": "Rows in the CSV file are samples and columns are traits.", 
+            "annotation": "At this step, a comma-separated (CSV) file containing trait data is provided.  Each line in the CSV file provides trait information for reach RNA-seq sample. The \"columns' of data represents  different traits.  The data elements are the trait-level information for each sample.", 
             "content_id": null, 
             "errors": null, 
             "id": 1, 
@@ -47,7 +47,7 @@
             "workflow_outputs": []
         }, 
         "2": {
-            "annotation": "", 
+            "annotation": "WGCNA is an R-based software package for construction of gene co-expression networks.  This step reads the GEM and trait data provided in the previous step and prepares it for execution.  There are no settings other than reporting options.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mingchen0919/rmarkdown_wgcna/wgcna_preprocessing/1.0.2", 
             "errors": null, 
             "id": 2, 
@@ -63,7 +63,7 @@
                     "name": "expression_data"
                 }
             ], 
-            "label": null, 
+            "label": "WGCNA: preprocessing", 
             "name": "WGCNA: preprocessing", 
             "outputs": [
                 {
@@ -76,8 +76,8 @@
                 }
             ], 
             "position": {
-                "left": 430, 
-                "top": 200
+                "left": 421, 
+                "top": 131
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mingchen0919/rmarkdown_wgcna/wgcna_preprocessing/1.0.2", 
@@ -87,14 +87,14 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"expression_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"expression_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\"}", 
             "tool_version": "1.0.2", 
             "type": "tool", 
             "uuid": "792985fb-91e7-4baa-aebc-b33f67f76de7", 
             "workflow_outputs": []
         }, 
         "3": {
-            "annotation": "", 
+            "annotation": "WGCNA is an R-based software package for construction of gene co-expression networks.  It uses the pre-processed GEM and trait data.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mingchen0919/rmarkdown_wgcna/wgcna_construct_network/1.0.2", 
             "errors": null, 
             "id": 3, 
@@ -118,7 +118,7 @@
                     "name": "preprocessing_workspace"
                 }
             ], 
-            "label": null, 
+            "label": "WGCNA: network construction", 
             "name": "WGCNA: construct network", 
             "outputs": [
                 {
@@ -131,8 +131,8 @@
                 }
             ], 
             "position": {
-                "left": 737, 
-                "top": 200
+                "left": 631, 
+                "top": 293
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mingchen0919/rmarkdown_wgcna/wgcna_construct_network/1.0.2", 
@@ -142,14 +142,14 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"trait_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"height_cut\": \"\\\"15.0\\\"\", \"preprocessing_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"trait_data\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"height_cut\": \"\\\"15.0\\\"\", \"preprocessing_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.2", 
             "type": "tool", 
             "uuid": "7a4d1033-c40f-4592-bf63-9402e6af2728", 
             "workflow_outputs": []
         }, 
         "4": {
-            "annotation": "", 
+            "annotation": "The final step in this workflow is the creation of visualizations for viewing results.  There are a few options top control this output.", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/mingchen0919/rmarkdown_wgcna/wgcna_eigengene_visualization/1.0.2", 
             "errors": null, 
             "id": 4, 
@@ -174,8 +174,8 @@
                 }
             ], 
             "position": {
-                "left": 1065, 
-                "top": 200
+                "left": 969, 
+                "top": 269
             }, 
             "post_job_actions": {}, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/mingchen0919/rmarkdown_wgcna/wgcna_eigengene_visualization/1.0.2", 
@@ -185,7 +185,7 @@
                 "owner": "mingchen0919", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"plot_genes\": \"\\\"400\\\"\", \"construct_network_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"soft_threshold_power\": \"\\\"6\\\"\", \"chromInfo\": \"\\\"/galaxy-central/tool-data/shared/ucsc/chrom/?.len\\\"\"}", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"echo\": \"\\\"false\\\"\", \"plot_genes\": \"\\\"400\\\"\", \"construct_network_workspace\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"soft_threshold_power\": \"\\\"6\\\"\"}", 
             "tool_version": "1.0.2", 
             "type": "tool", 
             "uuid": "bffe29fa-ac66-4db7-95ff-df5937e0a65d", 
@@ -193,5 +193,5 @@
         }
     }, 
     "tags": [], 
-    "uuid": "ad461d56-fdeb-43ef-97de-768a55673132"
+    "uuid": "e0571d4f-5c47-446c-9eeb-e4b48a99262e"
 }
