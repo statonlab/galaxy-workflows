@@ -16,7 +16,7 @@
 
 + **Functional Gene Annotation** - Get predicted function of gene sequences.
 
-    + [BLASTP to compare protein sequences to a protein database - SwissProt protein database provided, or upload your own protein database](hwg_workflows/blast_protein_sequences.ga)
+    + [BLASTP to compare protein sequences to a protein database - SwissProt protein database provided, or upload your own protein database](hwg_workflows/blast-protein-sequences.ga)
     + [InterProScan protein domain functional analysis for protein or nucleotide sequences](hwg_workflows/interproscan-protein-functional-analysis.ga) 
 
 **Transcriptomics**
