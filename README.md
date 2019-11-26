@@ -24,8 +24,8 @@
 + RNA-Seq differential expression analysis (htseq-count, DESeq2)
 
     - [Counting mapped reads](hwg_workflows/htseq-count-mapped-reads.ga)
-    - [Differential expression analysis with DESeq2](hwg_workflows/differential-expression-analysis.ga)
+    - [Differential expression analysis with DESeq2](hwg_workflows/differential-expression-deseq2-analysis.ga)
 
 **Variant Analysis**
 
-    - [Short Variant Analysis with FreeBayes and SnpEff](hwg_workflows/variant-analysis-freebayes-snpeff.ga)
++ [Short Variant Analysis with FreeBayes and SnpEff](hwg_workflows/variant-analysis-freebayes-snpeff.ga)
