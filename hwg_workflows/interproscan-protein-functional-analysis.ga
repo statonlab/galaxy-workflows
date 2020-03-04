@@ -1,1 +1,78 @@
-{"uuid": "f6f298f4-b6d6-4ce1-a360-2ab7e9533171", "tags": [], "format-version": "0.1", "name": "interproscan-protein-functional-analysis", "steps": {"0": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"collection_type\": \"list\"}", "id": 0, "uuid": "703879cf-bfd7-4422-b42e-895964e3dfa9", "errors": null, "name": "Input dataset collection", "label": "Protein sequences (FASTA data)", "inputs": [], "position": {"top": 200, "left": 200}, "annotation": "<ul><li>Input one or more fasta files which have protein sequences. These sequences are referred as <b>\"query\" sequences.<\/b><\/li><\/ul>", "content_id": null, "type": "data_collection_input"}, "1": {"tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", "tool_version": "1.0.0", "outputs": [{"type": "html", "name": "report"}, {"type": "txt", "name": "sink_message"}], "workflow_outputs": [], "input_connections": {"fasta_input": {"output_name": "output", "id": 0}}, "tool_state": "{\"__page__\": null, \"fasta_input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"goterms\": \"\\\"true\\\"\", \"output_format\": \"[\\\"XML\\\"]\", \"__rerun_remap_job_id__\": null, \"pathways\": \"\\\"true\\\"\", \"iprlookup\": \"\\\"true\\\"\", \"disable_precalc\": \"\\\"true\\\"\"}", "id": 1, "tool_shed_repository": {"owner": "mingchen0919", "changeset_revision": "4aa0cec3399f", "name": "statonlab_interprocan", "tool_shed": "testtoolshed.g2.bx.psu.edu"}, "uuid": "467b30d3-7646-4e60-8e19-08347294c818", "errors": null, "name": "statonlab interproscan", "post_job_actions": {}, "label": null, "inputs": [{"name": "fasta_input", "description": "runtime parameter for tool statonlab interproscan"}], "position": {"top": 200, "left": 489}, "annotation": "<b>Interproscan<\/b> scans <b>protein query sequences<\/b> (input at step 2) against InterPro's signatures. Signatures are predictive models, provided by several different databases, that make up the InterPro.", "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0", "type": "tool"}}, "annotation": "", "a_galaxy_workflow": "true"}
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "interproscan-protein-functional-analysis",
+    "steps": {
+        "0": {
+            "annotation": "<ul><li>Input one or more fasta files which have protein sequences. These sequences are referred as <b>\"query\" sequences.</b></li></ul>",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Protein sequences (FASTA data)",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "left": 200,
+                "top": 200
+            },
+            "tool_id": null,
+            "tool_state": "{\"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "703879cf-bfd7-4422-b42e-895964e3dfa9",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "<b>Interproscan</b> scans <b>protein query sequences</b> (input at step 2) against InterPro's signatures. Signatures are predictive models, provided by several different databases, that make up the InterPro.",
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "fasta_input": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool statonlab interproscan",
+                    "name": "fasta_input"
+                }
+            ],
+            "label": null,
+            "name": "statonlab interproscan",
+            "outputs": [
+                {
+                    "name": "report",
+                    "type": "html"
+                },
+                {
+                    "name": "sink_message",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 489,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/statonlab_interprocan/statonlab_interproscan/1.0.0",
+            "tool_shed_repository": {
+                "changeset_revision": "4aa0cec3399f",
+                "name": "statonlab_interprocan",
+                "owner": "mingchen0919",
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"fasta_input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"goterms\": \"\\\"true\\\"\", \"output_format\": \"[\\\"XML\\\"]\", \"__rerun_remap_job_id__\": null, \"pathways\": \"\\\"true\\\"\", \"iprlookup\": \"\\\"true\\\"\", \"disable_precalc\": \"\\\"true\\\"\"}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "467b30d3-7646-4e60-8e19-08347294c818",
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "f6f298f4-b6d6-4ce1-a360-2ab7e9533171"
+}

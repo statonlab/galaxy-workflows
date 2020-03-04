@@ -1,1 +1,74 @@
-{"uuid": "aea74541-19c3-44fc-bd97-d0a5fd353265", "tags": [], "format-version": "0.1", "name": "statonlab-hmmscan-pfam-merger", "steps": {"0": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"collection_type\": \"list\"}", "id": 0, "uuid": "c93966ad-be5d-4075-8d02-360c54e1e41d", "errors": null, "name": "Input dataset collection", "label": "hmmscan result files", "inputs": [], "position": {"top": 200, "left": 200}, "annotation": "<ul>\n<li>Two or more hmmscan result files from the <code>aurora_statonlab_hmmscan<\/code> tool<\/li>\n<\/ul>", "content_id": null, "type": "data_collection_input"}, "1": {"tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_statonlab_hmmscan_merger/aurora_statonlab_hmmscan_merger/1.0.0", "tool_version": "1.0.0", "outputs": [{"type": "html", "name": "report"}], "workflow_outputs": [], "input_connections": {"hmmscan_pfam_tblouts": {"output_name": "output", "id": 0}}, "tool_state": "{\"hmmscan_pfam_tblouts\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": null, \"__rerun_remap_job_id__\": null}", "id": 1, "tool_shed_repository": {"owner": "mingchen0919", "changeset_revision": "ae3909607532", "name": "aurora_statonlab_hmmscan_merger", "tool_shed": "testtoolshed.g2.bx.psu.edu"}, "uuid": "0c95d22e-05d0-4a4f-8d4e-0584a4959f0b", "errors": null, "name": "aurora_statonlab_hmmscan_merger", "post_job_actions": {}, "label": null, "inputs": [{"name": "hmmscan_pfam_tblouts", "description": "runtime parameter for tool aurora_statonlab_hmmscan_merger"}], "position": {"top": 200, "left": 492}, "annotation": "<ul>\n<li>The aurora_statonlab_hmmscan_merger tool merges results from the aurora_statonlab_hmmscan tool and group differentially expressed genes across multiple organims by pfam<\/li>\n<\/ul>", "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_statonlab_hmmscan_merger/aurora_statonlab_hmmscan_merger/1.0.0", "type": "tool"}}, "annotation": "", "a_galaxy_workflow": "true"}
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "statonlab-hmmscan-pfam-merger",
+    "steps": {
+        "0": {
+            "annotation": "<ul>\n<li>Two or more hmmscan result files from the <code>aurora_statonlab_hmmscan</code> tool</li>\n</ul>",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": "hmmscan result files",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "left": 200,
+                "top": 200
+            },
+            "tool_id": null,
+            "tool_state": "{\"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "c93966ad-be5d-4075-8d02-360c54e1e41d",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "<ul>\n<li>The aurora_statonlab_hmmscan_merger tool merges results from the aurora_statonlab_hmmscan tool and group differentially expressed genes across multiple organims by pfam</li>\n</ul>",
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_statonlab_hmmscan_merger/aurora_statonlab_hmmscan_merger/1.0.0",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "hmmscan_pfam_tblouts": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_statonlab_hmmscan_merger",
+                    "name": "hmmscan_pfam_tblouts"
+                }
+            ],
+            "label": null,
+            "name": "aurora_statonlab_hmmscan_merger",
+            "outputs": [
+                {
+                    "name": "report",
+                    "type": "html"
+                }
+            ],
+            "position": {
+                "left": 492,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_statonlab_hmmscan_merger/aurora_statonlab_hmmscan_merger/1.0.0",
+            "tool_shed_repository": {
+                "changeset_revision": "ae3909607532",
+                "name": "aurora_statonlab_hmmscan_merger",
+                "owner": "mingchen0919",
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"hmmscan_pfam_tblouts\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "0c95d22e-05d0-4a4f-8d4e-0584a4959f0b",
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "aea74541-19c3-44fc-bd97-d0a5fd353265"
+}

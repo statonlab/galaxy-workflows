@@ -1,1 +1,260 @@
-{"uuid": "f1f7a5cb-f523-4a68-be8d-32004982e9a4", "tags": [], "format-version": "0.1", "name": "mapping-bowtie2-single-end", "steps": {"0": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"collection_type\": \"list\"}", "id": 0, "uuid": "82360669-25ef-4ca6-8845-3d4b4b4cc7ef", "errors": null, "name": "Input dataset collection", "label": "Single end reads (FASTQ data)", "inputs": [], "position": {"top": 200, "left": 200}, "annotation": "Here you must provide your DNA-Seq files. This workflow only supports single (single-end) data. Use the form below to input one or more <b>single-end reads FASTQ<\/b>\n", "content_id": null, "type": "data_collection_input"}, "1": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{}", "id": 1, "uuid": "11fa8559-c1da-43dc-bcda-257ef49251da", "errors": null, "name": "Input dataset", "label": "Reference genome (fasta/txt)", "inputs": [], "position": {"top": 305, "left": 200}, "annotation": "At this step you must provide the reference genome sequence to which DNA-seq reads will be aligned.  There are two ways to provide this:\n<ul><\/ul>", "content_id": null, "type": "data_input"}, "2": {"tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", "tool_version": "1.1.1", "outputs": [{"type": "fastqsanger", "name": "output_file"}], "workflow_outputs": [], "input_connections": {"input_file": {"output_name": "output", "id": 0}}, "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"output_type\\\": \\\"sanger\\\", \\\"force_quality_encoding\\\": \\\"ascii\\\", \\\"__current_case__\\\": 1, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"summarize_input\\\": \\\"summarize_input\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", "id": 2, "tool_shed_repository": {"owner": "devteam", "changeset_revision": "71e5fa25b8a2", "name": "fastq_groomer", "tool_shed": "toolshed.g2.bx.psu.edu"}, "uuid": "46cc7d53-c5eb-44e6-b2e9-4712bad4fc84", "errors": null, "name": "FASTQ Groomer", "post_job_actions": {}, "label": null, "inputs": [{"name": "input_file", "description": "runtime parameter for tool FASTQ Groomer"}], "position": {"top": 200, "left": 489}, "annotation": "Here, the <b>FASTQ Groomer<\/b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.", "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", "type": "tool"}, "3": {"tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", "tool_version": "1.0.0", "outputs": [{"type": "html", "name": "report"}, {"type": "fasta", "name": "output_fasta"}], "workflow_outputs": [], "input_connections": {"upload_fasta": {"output_name": "output", "id": 1}}, "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", "id": 3, "tool_shed_repository": {"owner": "mingchen0919", "changeset_revision": "a05a0505bb4a", "name": "aurora_fasta_importer", "tool_shed": "testtoolshed.g2.bx.psu.edu"}, "uuid": "a24338e6-4213-4a79-9a7f-06447be4f795", "errors": null, "name": "aurora_fasta_importer", "post_job_actions": {}, "label": null, "inputs": [{"name": "upload_fasta", "description": "runtime parameter for tool aurora_fasta_importer"}], "position": {"top": 430, "left": 489}, "annotation": "If you chose the second option when uploading the file for your genome sequence and the file contains a URL then you must indicate the format of the remote file. If the file is compressed and has a .gz or .2bit extension then select it from the list below.  If you uploaded a FASTA file directly then you can move on to the next step.", "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", "type": "tool"}, "4": {"tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4.2", "tool_version": "2.3.4.2", "outputs": [{"type": "fastqsanger", "name": "output_unaligned_reads_l"}, {"type": "fastqsanger", "name": "output_aligned_reads_l"}, {"type": "fastqsanger", "name": "output_aligned_reads_r"}, {"type": "fastqsanger", "name": "output_unaligned_reads_r"}, {"type": "bam", "name": "output"}, {"type": "sam", "name": "output_sam"}, {"type": "txt", "name": "mapping_stats"}], "workflow_outputs": [], "input_connections": {"library|input_1": {"output_name": "output_file", "id": 2}, "reference_genome|own_file": {"output_name": "output_fasta", "id": 3}}, "tool_state": "{\"sam_options\": \"{\\\"sam_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"false\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"__current_case__\\\": 1, \\\"own_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"simple\\\", \\\"presets\\\": \\\"no_presets\\\", \\\"__current_case__\\\": 0}\"}", "id": 4, "tool_shed_repository": {"owner": "devteam", "changeset_revision": "17062a0decb7", "name": "bowtie2", "tool_shed": "toolshed.g2.bx.psu.edu"}, "uuid": "8b9cc727-b979-4313-9c57-84da4f3db6c2", "errors": null, "name": "Bowtie2", "post_job_actions": {}, "label": null, "inputs": [{"name": "library", "description": "runtime parameter for tool Bowtie2"}, {"name": "reference_genome", "description": "runtime parameter for tool Bowtie2"}], "position": {"top": 200, "left": 817}, "annotation": "<b>Bowtie2<\/b> is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s of characters to relatively long (e.g. mammalian) genomes.", "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4.2", "type": "tool"}, "5": {"tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", "tool_version": "2.0.1", "outputs": [{"type": "txt", "name": "output1"}], "workflow_outputs": [], "input_connections": {"input1": {"output_name": "output", "id": 4}}, "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", "id": 5, "tool_shed_repository": {"owner": "devteam", "changeset_revision": "cc61ade70eb8", "name": "samtools_flagstat", "tool_shed": "toolshed.g2.bx.psu.edu"}, "uuid": "3f97f8b7-dd90-493c-bbf2-ffadc1bc9bf9", "errors": null, "name": "Flagstat", "post_job_actions": {}, "label": null, "inputs": [{"name": "input1", "description": "runtime parameter for tool Flagstat"}], "position": {"top": 200, "left": 1145}, "annotation": "Finally, <b>samtools's flagstat<\/b> tool is used to generates a descriptive report from the alignment process. It has no settings. You may continue to the next step.", "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", "type": "tool"}}, "annotation": "", "a_galaxy_workflow": "true"}
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "mapping-bowtie2-single-end",
+    "steps": {
+        "0": {
+            "annotation": "Here you must provide your DNA-Seq files. This workflow only supports single (single-end) data. Use the form below to input one or more <b>single-end read FASTQ</b>\n",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Single end reads (FASTQ data)",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "left": 200,
+                "top": 200
+            },
+            "tool_id": null,
+            "tool_state": "{\"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "82360669-25ef-4ca6-8845-3d4b4b4cc7ef",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "At this step you must provide the reference genome sequence to which DNA-seq reads will be aligned.  There are two ways to provide this:\n<ul></ul>",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Reference genome (fasta/txt)",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 200,
+                "top": 305
+            },
+            "tool_id": null,
+            "tool_state": "{}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "11fa8559-c1da-43dc-bcda-257ef49251da",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "Here, the <b>FASTQ Groomer</b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer",
+                    "name": "input_file"
+                }
+            ],
+            "label": null,
+            "name": "FASTQ Groomer",
+            "outputs": [
+                {
+                    "name": "output_file",
+                    "type": "fastqsanger"
+                }
+            ],
+            "position": {
+                "left": 489,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1",
+            "tool_shed_repository": {
+                "changeset_revision": "71e5fa25b8a2",
+                "name": "fastq_groomer",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"output_type\\\": \\\"sanger\\\", \\\"force_quality_encoding\\\": \\\"ascii\\\", \\\"__current_case__\\\": 1, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"summarize_input\\\": \\\"summarize_input\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}",
+            "tool_version": "1.1.1",
+            "type": "tool",
+            "uuid": "46cc7d53-c5eb-44e6-b2e9-4712bad4fc84",
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "If you chose the second option when uploading the file for your genome sequence and the file contains a URL then you must indicate the format of the remote file. If the file is compressed and has a .gz or .2bit extension then select it from the list below.  If you uploaded a FASTA file directly then you can move on to the next step.",
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "upload_fasta": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer",
+                    "name": "upload_fasta"
+                }
+            ],
+            "label": null,
+            "name": "aurora_fasta_importer",
+            "outputs": [
+                {
+                    "name": "report",
+                    "type": "html"
+                },
+                {
+                    "name": "output_fasta",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "left": 489,
+                "top": 430
+            },
+            "post_job_actions": {},
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0",
+            "tool_shed_repository": {
+                "changeset_revision": "a05a0505bb4a",
+                "name": "aurora_fasta_importer",
+                "owner": "mingchen0919",
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "a24338e6-4213-4a79-9a7f-06447be4f795",
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "<b>Bowtie2</b> is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s of characters to relatively long (e.g. mammalian) genomes.",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4.2",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "library|input_1": {
+                    "id": 2,
+                    "output_name": "output_file"
+                },
+                "reference_genome|own_file": {
+                    "id": 3,
+                    "output_name": "output_fasta"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Bowtie2",
+                    "name": "library"
+                },
+                {
+                    "description": "runtime parameter for tool Bowtie2",
+                    "name": "reference_genome"
+                }
+            ],
+            "label": null,
+            "name": "Bowtie2",
+            "outputs": [
+                {
+                    "name": "output_unaligned_reads_l",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output_aligned_reads_l",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output_aligned_reads_r",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output_unaligned_reads_r",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output",
+                    "type": "bam"
+                },
+                {
+                    "name": "output_sam",
+                    "type": "sam"
+                },
+                {
+                    "name": "mapping_stats",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 817,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4.2",
+            "tool_shed_repository": {
+                "changeset_revision": "17062a0decb7",
+                "name": "bowtie2",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"sam_options\": \"{\\\"sam_options_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 1}\", \"__page__\": null, \"__rerun_remap_job_id__\": null, \"library\": \"{\\\"aligned_file\\\": \\\"false\\\", \\\"unaligned_file\\\": \\\"false\\\", \\\"type\\\": \\\"single\\\", \\\"__current_case__\\\": 0, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"__current_case__\\\": 1, \\\"own_file\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"save_mapping_stats\": \"\\\"false\\\"\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"simple\\\", \\\"presets\\\": \\\"no_presets\\\", \\\"__current_case__\\\": 0}\"}",
+            "tool_version": "2.3.4.2",
+            "type": "tool",
+            "uuid": "8b9cc727-b979-4313-9c57-84da4f3db6c2",
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "Finally, <b>samtools's flagstat</b> tool is used to generates a descriptive report from the alignment process. It has no settings. You may continue to the next step.",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input1": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat",
+                    "name": "input1"
+                }
+            ],
+            "label": null,
+            "name": "Flagstat",
+            "outputs": [
+                {
+                    "name": "output1",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 1145,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1",
+            "tool_shed_repository": {
+                "changeset_revision": "cc61ade70eb8",
+                "name": "samtools_flagstat",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}",
+            "tool_version": "2.0.1",
+            "type": "tool",
+            "uuid": "3f97f8b7-dd90-493c-bbf2-ffadc1bc9bf9",
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "f1f7a5cb-f523-4a68-be8d-32004982e9a4"
+}

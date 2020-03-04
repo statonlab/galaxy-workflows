@@ -1,1 +1,256 @@
-{"uuid": "2f2d4f04-a467-443f-be77-a494276f92d7", "tags": [], "format-version": "0.1", "name": "mapping-hisat2-paired-end", "steps": {"0": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{}", "id": 0, "uuid": "0b42379a-ee04-4169-8b66-7de34b9c8120", "errors": null, "name": "Input dataset", "label": "Reference genome (fasta/txt)", "inputs": [], "position": {"top": 200, "left": 200}, "annotation": "At this step you must provide the reference genome sequence to which RNA-seq reads will be aligned.  There are two ways to provide this:\n<ul>\n    <li>Option 1: input a <b>FASTA<\/b> file which contains reference genome sequences<\/li>\n    <li>Option 2: input a <b>text<\/b> file which contains a single URL where the reference genome sequences file is located.\n    <\/li>\n<\/ul>", "content_id": null, "type": "data_input"}, "1": {"tool_id": null, "tool_version": null, "outputs": [], "workflow_outputs": [], "input_connections": {}, "tool_state": "{\"collection_type\": \"list:paired\"}", "id": 1, "uuid": "4b4bac3f-634b-4345-99ec-8124a3c35d51", "errors": null, "name": "Input dataset collection", "label": "Paired-end reads (FASTQ)", "inputs": [], "position": {"top": 305, "left": 200}, "annotation": "Here you must provide your RNA-Seq files. This workflow only supports paired (paired-end) data. Use the form below to input one or more <b>paired-end reads FASTQ<\/b>\n", "content_id": null, "type": "data_collection_input"}, "2": {"tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", "tool_version": "1.0.0", "outputs": [{"type": "html", "name": "report"}, {"type": "fasta", "name": "output_fasta"}], "workflow_outputs": [], "input_connections": {"upload_fasta": {"output_name": "output", "id": 0}}, "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", "id": 2, "tool_shed_repository": {"owner": "mingchen0919", "changeset_revision": "a05a0505bb4a", "name": "aurora_fasta_importer", "tool_shed": "testtoolshed.g2.bx.psu.edu"}, "uuid": "36555549-9b45-4d2a-8e6d-dba12938f072", "errors": null, "name": "aurora_fasta_importer", "post_job_actions": {}, "label": null, "inputs": [{"name": "upload_fasta", "description": "runtime parameter for tool aurora_fasta_importer"}], "position": {"top": 200, "left": 489}, "annotation": "If you chose the second option when uploading the file for your genome sequence and the file contains a URL then you must indicate the format of the remote file. If the file is compressed and has a .gz or .2bit extension then select it from the list below.  If you uploaded a FASTA file directly then you can move on to the next step.\n", "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0", "type": "tool"}, "3": {"tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", "tool_version": "1.1.1", "outputs": [{"type": "fastqsanger", "name": "output_file"}], "workflow_outputs": [], "input_connections": {"input_file": {"output_name": "output", "id": 1}}, "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", "id": 3, "tool_shed_repository": {"owner": "devteam", "changeset_revision": "71e5fa25b8a2", "name": "fastq_groomer", "tool_shed": "toolshed.g2.bx.psu.edu"}, "uuid": "4bd56d4c-4c8c-4d91-9cea-d43cb3393e2b", "errors": null, "name": "FASTQ Groomer", "post_job_actions": {}, "label": null, "inputs": [{"name": "input_file", "description": "runtime parameter for tool FASTQ Groomer"}], "position": {"top": 344, "left": 489}, "annotation": "Here, the <b>FASTQ Groomer<\/b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.\n", "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1", "type": "tool"}, "4": {"tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0+galaxy2", "tool_version": "2.1.0+galaxy2", "outputs": [{"type": "bam", "name": "output_alignments"}, {"type": "fastqsanger", "name": "output_unaligned_reads_l"}, {"type": "fastqsanger", "name": "output_aligned_reads_l"}, {"type": "fastqsanger", "name": "output_unaligned_reads_r"}, {"type": "fastqsanger", "name": "output_aligned_reads_r"}, {"type": "txt", "name": "summary_file"}], "workflow_outputs": [], "input_connections": {"reference_genome|history_item": {"output_name": "output_fasta", "id": 2}, "library|input_1": {"output_name": "output_file", "id": 3}}, "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"paired_collection\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 2, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null}", "id": 4, "tool_shed_repository": {"owner": "iuc", "changeset_revision": "a26ed87f444c", "name": "hisat2", "tool_shed": "toolshed.g2.bx.psu.edu"}, "uuid": "7b57df9a-f22b-49ca-863d-1cd9b72d9eb4", "errors": null, "name": "HISAT2", "post_job_actions": {}, "label": null, "inputs": [{"name": "reference_genome", "description": "runtime parameter for tool HISAT2"}, {"name": "library", "description": "runtime parameter for tool HISAT2"}], "position": {"top": 200, "left": 817}, "annotation": "This step uses <b>HISAT2<\/b> to perform RNA-seq alignments to the genome reference sequence. It is a fast and sensitive alignment program and uses a graph-based alignment and has succeeded HISAT and TOPHAT2. This tool has a variety of options, however most have been pre-selected for this type of analysis.\n", "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0+galaxy2", "type": "tool"}, "5": {"tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", "tool_version": "2.0.1", "outputs": [{"type": "txt", "name": "output1"}], "workflow_outputs": [], "input_connections": {"input1": {"output_name": "output_alignments", "id": 4}}, "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", "id": 5, "tool_shed_repository": {"owner": "devteam", "changeset_revision": "cc61ade70eb8", "name": "samtools_flagstat", "tool_shed": "toolshed.g2.bx.psu.edu"}, "uuid": "cd3d05f8-fad9-4eff-8485-e0cf752aab27", "errors": null, "name": "Flagstat", "post_job_actions": {}, "label": null, "inputs": [{"name": "input1", "description": "runtime parameter for tool Flagstat"}], "position": {"top": 200, "left": 1145}, "annotation": "Finally, <b>samtools's flagstat<\/b> tool is used to generates a descriptive report from the alignment process. It has no settings. You may continue to the next step.", "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1", "type": "tool"}}, "annotation": "", "a_galaxy_workflow": "true"}
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "mapping-hisat2-paired-end",
+    "steps": {
+        "0": {
+            "annotation": "At this step you must provide the reference genome sequence to which RNA-seq reads will be aligned.  There are two ways to provide this:\n<ul>\n    <li>Option 1: input a <b>FASTA</b> file which contains reference genome sequences</li>\n    <li>Option 2: input a <b>text</b> file which contains a single URL where the reference genome sequences file is located.\n    </li>\n</ul>",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Reference genome (fasta/txt)",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 200,
+                "top": 200
+            },
+            "tool_id": null,
+            "tool_state": "{}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "0b42379a-ee04-4169-8b66-7de34b9c8120",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "Here you must provide your RNA-Seq files. This workflow only supports paired (paired-end) data. Use the form below to input one or more <b>paired-end reads FASTQ</b>\n",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Paired-end reads (FASTQ)",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "left": 200,
+                "top": 305
+            },
+            "tool_id": null,
+            "tool_state": "{\"collection_type\": \"list:paired\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "4b4bac3f-634b-4345-99ec-8124a3c35d51",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "If you chose the second option when uploading the file for your genome sequence and the file contains a URL then you must indicate the format of the remote file. If the file is compressed and has a .gz or .2bit extension then select it from the list below.  If you uploaded a FASTA file directly then you can move on to the next step.\n",
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "upload_fasta": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool aurora_fasta_importer",
+                    "name": "upload_fasta"
+                }
+            ],
+            "label": null,
+            "name": "aurora_fasta_importer",
+            "outputs": [
+                {
+                    "name": "report",
+                    "type": "html"
+                },
+                {
+                    "name": "output_fasta",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "left": 489,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/mingchen0919/aurora_fasta_importer/aurora_fasta_importer_report/1.0.0",
+            "tool_shed_repository": {
+                "changeset_revision": "a05a0505bb4a",
+                "name": "aurora_fasta_importer",
+                "owner": "mingchen0919",
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"url_ext\": \"\\\"fasta\\\"\", \"upload_fasta\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "36555549-9b45-4d2a-8e6d-dba12938f072",
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "Here, the <b>FASTQ Groomer</b> tool is used to verify and convert between the known FASTQ variants. The data created by this tool is guaranteed to conform to the target variant specified by the user, including the enforcement of quality score minimums and maximums.\n",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "input_file": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer",
+                    "name": "input_file"
+                }
+            ],
+            "label": null,
+            "name": "FASTQ Groomer",
+            "outputs": [
+                {
+                    "name": "output_file",
+                    "type": "fastqsanger"
+                }
+            ],
+            "position": {
+                "left": 489,
+                "top": 344
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.1",
+            "tool_shed_repository": {
+                "changeset_revision": "71e5fa25b8a2",
+                "name": "fastq_groomer",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"input_type\": \"\\\"sanger\\\"\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"__current_case__\\\": 0, \\\"options_type_selector\\\": \\\"basic\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}",
+            "tool_version": "1.1.1",
+            "type": "tool",
+            "uuid": "4bd56d4c-4c8c-4d91-9cea-d43cb3393e2b",
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "This step uses <b>HISAT2</b> to perform RNA-seq alignments to the genome reference sequence. It is a fast and sensitive alignment program and uses a graph-based alignment and has succeeded HISAT and TOPHAT2. This tool has a variety of options, however most have been pre-selected for this type of analysis.\n",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0+galaxy2",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "library|input_1": {
+                    "id": 3,
+                    "output_name": "output_file"
+                },
+                "reference_genome|history_item": {
+                    "id": 2,
+                    "output_name": "output_fasta"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool HISAT2",
+                    "name": "reference_genome"
+                },
+                {
+                    "description": "runtime parameter for tool HISAT2",
+                    "name": "library"
+                }
+            ],
+            "label": null,
+            "name": "HISAT2",
+            "outputs": [
+                {
+                    "name": "output_alignments",
+                    "type": "bam"
+                },
+                {
+                    "name": "output_unaligned_reads_l",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output_aligned_reads_l",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output_unaligned_reads_r",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "output_aligned_reads_r",
+                    "type": "fastqsanger"
+                },
+                {
+                    "name": "summary_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 817,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.1.0+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "a26ed87f444c",
+                "name": "hisat2",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"adv\": \"{\\\"alignment_options\\\": {\\\"__current_case__\\\": 0, \\\"alignment_options_selector\\\": \\\"defaults\\\"}, \\\"output_options\\\": {\\\"output_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"other_options\\\": {\\\"other_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"spliced_options\\\": {\\\"spliced_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"reporting_options\\\": {\\\"reporting_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"input_options\\\": {\\\"input_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}}\", \"__page__\": null, \"sum\": \"{\\\"new_summary\\\": \\\"false\\\", \\\"summary_file\\\": \\\"false\\\"}\", \"library\": \"{\\\"rna_strandness\\\": \\\"\\\", \\\"type\\\": \\\"paired_collection\\\", \\\"paired_options\\\": {\\\"paired_options_selector\\\": \\\"defaults\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 2, \\\"input_1\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"reference_genome\": \"{\\\"source\\\": \\\"history\\\", \\\"history_item\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1}\", \"__rerun_remap_job_id__\": null}",
+            "tool_version": "2.1.0+galaxy2",
+            "type": "tool",
+            "uuid": "7b57df9a-f22b-49ca-863d-1cd9b72d9eb4",
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "Finally, <b>samtools's flagstat</b> tool is used to generates a descriptive report from the alignment process. It has no settings. You may continue to the next step.",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input1": {
+                    "id": 4,
+                    "output_name": "output_alignments"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Flagstat",
+                    "name": "input1"
+                }
+            ],
+            "label": null,
+            "name": "Flagstat",
+            "outputs": [
+                {
+                    "name": "output1",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 1145,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtools_flagstat/samtools_flagstat/2.0.1",
+            "tool_shed_repository": {
+                "changeset_revision": "cc61ade70eb8",
+                "name": "samtools_flagstat",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}",
+            "tool_version": "2.0.1",
+            "type": "tool",
+            "uuid": "cd3d05f8-fad9-4eff-8485-e0cf752aab27",
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "2f2d4f04-a467-443f-be77-a494276f92d7"
+}
